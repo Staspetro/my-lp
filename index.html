@@ -984,7 +984,7 @@ footer {
     <span class="logo-icon">ס</span>
     רפא, אל תשווק
   </div>
-  <button class="nav-cta" onclick="scrollTo('form')">בואי נדבר</button>
+  <button class="nav-cta" onclick="scrollToSection('form')">בואי נדבר</button>
 </nav>
 
 <!-- ─── HERO ─── -->
@@ -1001,11 +1001,11 @@ footer {
     </p>
 
     <div class="cta-row">
-      <button class="btn-main" onclick="scrollTo('form')">
+      <button class="btn-main" onclick="scrollToSection('form')">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
         <span>בואי נדבר</span>
       </button>
-      <button class="btn-ghost" onclick="scrollTo('form')">איך זה עובד? ↓</button>
+      <button class="btn-ghost" onclick="scrollToSection('form')">איך זה עובד? ↓</button>
     </div>
 
     <div class="trust-bar">
@@ -1218,7 +1218,7 @@ footer {
 <section class="final-cta">
   <h2>שיחה אחת.<br>זה כל מה שצריך<br>כדי <em>להתחיל.</em></h2>
   <p>20 דקות. בלי התחייבות. בלי לחץ. רק שיחה כנה על האם זה ההתאמה הנכונה — לך ולי.</p>
-  <button class="btn-main" onclick="scrollTo('form')">
+  <button class="btn-main" onclick="scrollToSection('form')">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
     <span>בואי נדבר</span>
   </button>
@@ -1271,7 +1271,7 @@ footer {
 <!-- ─── JS ─── -->
 <script>
 // Scroll to section
-function scrollTo(id) {
+function scrollToSection(id) {
   document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
 }
 
