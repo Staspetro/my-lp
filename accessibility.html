@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>הצהרת נגישות – בטר אקספיריאנס בע״מ</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --cream: #FDFBF7;
+  --white: #FFFFFF;
+  --sage: #5E9B6B;
+  --sage-light: #8BC49A;
+  --sage-deep: #3D7A4A;
+  --sage-pale: #E8F5EC;
+  --charcoal: #1A1A2E;
+  --warm-gray: #5A5A6E;
+  --light-gray: #8E8E9F;
+  --border: #E8E4DD;
+  --shadow-sm: 0 2px 8px rgba(26,26,46,0.06);
+  --shadow-md: 0 8px 32px rgba(26,26,46,0.10);
+  --radius-md: 20px;
+}
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+body {
+  font-family: 'Open Sans', sans-serif;
+  background: var(--cream);
+  color: var(--charcoal);
+  -webkit-font-smoothing: antialiased;
+  line-height: 1.8;
+}
+a { text-decoration:none; color:inherit; }
+nav {
+  position:fixed; top:0; left:0; right:0; z-index:100;
+  padding: 18px 48px;
+  display:flex; align-items:center; justify-content:space-between;
+  background: rgba(253,251,247,0.95);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border);
+  box-shadow: var(--shadow-sm);
+}
+.nav-logo {
+  font-size: 22px;
+  font-weight: 800;
+  color: var(--charcoal);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.nav-logo .logo-icon {
+  width: 36px;
+  height: 36px;
+  background: linear-gradient(135deg, var(--sage), var(--sage-deep));
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 16px;
+  font-weight: 700;
+}
+.back-btn {
+  background: var(--charcoal);
+  color: white;
+  padding: 12px 24px;
+  border-radius: 30px;
+  font-weight: 600;
+  font-size: 14px;
+  transition: all 0.3s;
+}
+.back-btn:hover {
+  background: var(--sage);
+  transform: translateY(-2px);
+}
+.legal-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 120px 24px 60px;
+}
+.legal-header {
+  text-align: center;
+  margin-bottom: 48px;
+}
+.legal-header h1 {
+  font-size: 36px;
+  color: var(--charcoal);
+  margin-bottom: 16px;
+}
+.legal-header .update-date {
+  color: var(--light-gray);
+  font-size: 14px;
+}
+.legal-content {
+  background: var(--white);
+  border-radius: var(--radius-md);
+  padding: 48px;
+  box-shadow: var(--shadow-md);
+}
+.legal-content h2 {
+  font-size: 22px;
+  color: var(--charcoal);
+  margin: 32px 0 16px;
+  padding-bottom: 12px;
+  border-bottom: 2px solid var(--sage-light);
+}
+.legal-content h2:first-child {
+  margin-top: 0;
+}
+.legal-content p {
+  color: var(--warm-gray);
+  margin-bottom: 16px;
+  font-size: 16px;
+}
+.legal-content ul {
+  margin: 16px 0;
+  padding-right: 24px;
+}
+.legal-content li {
+  color: var(--warm-gray);
+  margin-bottom: 12px;
+  font-size: 16px;
+}
+.legal-content strong {
+  color: var(--charcoal);
+}
+.legal-content a {
+  color: var(--sage);
+  text-decoration: underline;
+}
+.contact-box {
+  background: var(--sage-pale);
+  border-radius: 12px;
+  padding: 24px;
+  margin: 24px 0;
+}
+.contact-box h3 {
+  color: var(--sage-deep);
+  margin-bottom: 16px;
+  font-size: 18px;
+}
+.contact-box p {
+  margin-bottom: 8px;
+}
+footer {
+  background: var(--charcoal);
+  color: rgba(255,255,255,0.6);
+  font-size: 14px;
+  padding: 40px 24px 32px;
+  text-align: center;
+}
+.footer-links {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 24px;
+  margin-bottom: 20px;
+}
+.footer-links a {
+  color: rgba(255,255,255,0.7);
+  transition: color 0.3s;
+}
+.footer-links a:hover {
+  color: var(--sage-light);
+}
+.footer-copyright {
+  color: rgba(255,255,255,0.4);
+  font-size: 13px;
+}
+.footer-copyright a {
+  color: rgba(255,255,255,0.5);
+}
+@media (max-width: 768px) {
+  nav { padding: 16px 20px; }
+  .legal-container { padding: 100px 16px 40px; }
+  .legal-content { padding: 32px 24px; }
+  .legal-header h1 { font-size: 28px; }
+  .footer-links { gap: 16px; }
+}
+</style>
+</head>
+<body>
+<nav>
+  <a href="index.html" class="nav-logo">
+    <span class="logo-icon">ס</span>
+    בטר אקספיריאנס
+  </a>
+  <a href="index.html" class="back-btn">← חזרה לאתר</a>
+</nav>
+
+<div class="legal-container">
+  <div class="legal-header">
+    <h1>הצהרת נגישות</h1>
+    <p class="update-date">תאריך עדכון: 3 בפברואר 2026</p>
+  </div>
+
+  <div class="legal-content">
+    <p>בחברת בטר אקספיריאנס בע״מ אנו רואים חשיבות עליונה בהנגשת שירותינו לכלל הציבור, ובכלל זה לאנשים עם מוגבלות. אנו פועלים מתוך אמונה כי לכל אדם מגיעה הזכות לחיות בשוויון, בכבוד, בנוחות ובעצמאות.</p>
+    <p>אנו משקיעים משאבים על מנת להבטיח שהאתר שלנו יהיה קל לשימוש ונגיש, מתוך תפיסה כי לכל אדם מגיעה חוויית משתמש שוויונית ומכבדת.</p>
+
+    <h2>רמת הנגישות באתר</h2>
+    <p>האתר מונגש בהתאם להנחיות הנגישות בתקן הישראלי 5568 ("קווים מנחים לנגישות תכנים באינטרנט") וברמה AA. תקן זה תואם את מסמך ההנחיות הבינלאומי WCAG 2.0 של ארגון ה-W3C.</p>
+
+    <h2>התאמות הנגישות שבוצעו</h2>
+    <p>האתר נבנה תוך הקפדה על עקרונות הנגישות, הכוללים בין היתר:</p>
+    <ul>
+      <li><strong>ניווט מקלדת:</strong> אפשרות גלישה מלאה באתר באמצעות המקלדת בלבד.</li>
+      <li><strong>תמיכה בקוראי מסך:</strong> האתר מותאם לעבודה עם קוראי מסך פופולריים.</li>
+      <li><strong>ניגודיות צבעים:</strong> הקפדה על יחס ניגודיות תקין לקריאה נוחה.</li>
+      <li><strong>היררכיית תוכן:</strong> שימוש נכון בכותרות (H1-H6) ובתיאורי אלט (Alt Text) לתמונות.</li>
+      <li><strong>גמישות תצוגה:</strong> אפשרות להגדלת התצוגה (Zoom) מבלי לפגוע במבנה האתר.</li>
+    </ul>
+
+    <h2>שירות לקוחות נגיש</h2>
+    <p>חברת בטר אקספיריאנס בע״מ הינה חברה המעניקה שירותים דיגיטליים בלבד ואינה מחזיקה במשרדים פיזיים המקבלים קהל. לכן, כל שירותי המכללה והתמיכה ניתנים באופן נגיש דרך האתר, הדואר האלקטרוני והטלפון.</p>
+
+    <div class="contact-box">
+      <h3>פרטי רכז נגישות</h3>
+      <p>בכל שאלה, בקשה לקבלת מידע בפורמט נגיש או הצעה לשיפור הנגישות באתר, ניתן לפנות לרכז הנגישות שלנו:</p>
+      <p><strong>שם:</strong> סטאס פטרובץ</p>
+      <p><strong>טלפון:</strong> <a href="tel:054-7716292">054-7716292</a></p>
+      <p><strong>דוא"ל:</strong> <a href="mailto:stas@bex.org.il">stas@bex.org.il</a></p>
+    </div>
+
+    <p>אנו מתחייבים לטפל בכל פנייה בנושא נגישות בתוך זמן סביר ולפעול לשיפור מתמיד של חוויית הגלישה עבור כלל המשתמשים.</p>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-links">
+    <a href="terms.html">תקנון ותנאי שימוש</a>
+    <a href="privacy.html">מדיניות פרטיות</a>
+    <a href="accessibility.html">הצהרת נגישות</a>
+    <a href="cancellation.html">ביטול עסקה</a>
+  </div>
+  <div class="footer-copyright">
+    © 2026 בטר אקספיריאנס בע״מ | <a href="mailto:office@bex.org.il">office@bex.org.il</a>
+  </div>
+</footer>
+</body>
+</html>
