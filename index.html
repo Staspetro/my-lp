@@ -1321,7 +1321,7 @@ document.getElementById('contact-form').addEventListener('submit', async functio
 
   try {
     // 1. Send to Formspree (Email)
-    const formspreeResponse = await fetch('https://formspree.io/f/xyzgkqvw', {
+    const formspreeResponse = await fetch('https://formspree.io/f/xkozdayv', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -1336,9 +1336,9 @@ document.getElementById('contact-form').addEventListener('submit', async functio
       })
     });
 
-    // 2. Send to Google Sheets (if configured)
-    const GOOGLE_SCRIPT_URL = 'YOUR_GOOGLE_SCRIPT_URL'; // Replace with your Google Apps Script URL
-    if (GOOGLE_SCRIPT_URL !== 'YOUR_GOOGLE_SCRIPT_URL') {
+    // 2. Send to Google Sheets
+    const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwBTLWsGitdAOESFliWhVfteQrI43ysm2zu0AfCQC91dwsa_VltlHySZA5-KgvXIxaY/exec';
+    if (GOOGLE_SCRIPT_URL) {
       fetch(GOOGLE_SCRIPT_URL, {
         method: 'POST',
         mode: 'no-cors',
