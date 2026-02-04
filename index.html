@@ -1116,9 +1116,12 @@ footer {
   font-weight: 500;
 }
 .acc-option-label svg {
-  width: 20px;
-  height: 20px;
+  width: 24px;
+  height: 24px;
   fill: #1565C0;
+  background: #e3f2fd;
+  padding: 4px;
+  border-radius: 6px;
   flex-shrink: 0;
 }
 .acc-toggle-switch {
@@ -1166,9 +1169,12 @@ footer {
   font-weight: 500;
 }
 .acc-font-label svg {
-  width: 20px;
-  height: 20px;
+  width: 24px;
+  height: 24px;
   fill: #1565C0;
+  background: #e3f2fd;
+  padding: 4px;
+  border-radius: 6px;
 }
 .acc-font-controls {
   display: flex;
@@ -1704,7 +1710,7 @@ body.acc-focus-highlight *:focus {
       <div class="acc-section">
         <div class="acc-section-title">תצוגה</div>
 
-        <div class="acc-option" data-feature="acc-high-contrast" onclick="toggleAccessibility('acc-high-contrast', this)" role="button" tabindex="0">
+        <div class="acc-option" data-feature="acc-high-contrast" onclick="toggleAccessibility('acc-high-contrast', this, event)" role="button" tabindex="0">
           <span class="acc-option-label">
             <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.94-.49-7-3.85-7-7.93s3.06-7.44 7-7.93v15.86zm2 0V4.07c3.94.49 7 3.85 7 7.93s-3.06 7.44-7 7.93z"/></svg>
             ניגודיות גבוהה
@@ -1712,7 +1718,7 @@ body.acc-focus-highlight *:focus {
           <div class="acc-toggle-switch"></div>
         </div>
 
-        <div class="acc-option" data-feature="acc-grayscale" onclick="toggleAccessibility('acc-grayscale', this)" role="button" tabindex="0">
+        <div class="acc-option" data-feature="acc-grayscale" onclick="toggleAccessibility('acc-grayscale', this, event)" role="button" tabindex="0">
           <span class="acc-option-label">
             <svg viewBox="0 0 24 24"><path d="M17.66 7.93L12 2.27 6.34 7.93c-3.12 3.12-3.12 8.19 0 11.31C7.9 20.8 9.95 21.58 12 21.58c2.05 0 4.1-.78 5.66-2.34 3.12-3.12 3.12-8.19 0-11.31zM12 19.59c-1.6 0-3.11-.62-4.24-1.76C6.62 16.69 6 15.19 6 13.59s.62-3.11 1.76-4.24L12 5.1v14.49z"/></svg>
             גווני אפור
@@ -1720,7 +1726,7 @@ body.acc-focus-highlight *:focus {
           <div class="acc-toggle-switch"></div>
         </div>
 
-        <div class="acc-option" data-feature="acc-negative" onclick="toggleAccessibility('acc-negative', this)" role="button" tabindex="0">
+        <div class="acc-option" data-feature="acc-negative" onclick="toggleAccessibility('acc-negative', this, event)" role="button" tabindex="0">
           <span class="acc-option-label">
             <svg viewBox="0 0 24 24"><path d="M20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69zM12 18c-3.31 0-6-2.69-6-6s2.69-6 6-6 6 2.69 6 6-2.69 6-6 6z"/></svg>
             ניגודיות הפוכה
@@ -1739,13 +1745,13 @@ body.acc-focus-highlight *:focus {
             גודל טקסט
           </span>
           <div class="acc-font-controls">
-            <button class="acc-font-btn" onclick="changeFontSize(-10)" aria-label="הקטן טקסט">א-</button>
+            <button class="acc-font-btn" onclick="event.stopPropagation(); changeFontSize(-10)" aria-label="הקטן טקסט">א-</button>
             <span class="acc-font-display" id="fontSizeDisplay">100%</span>
-            <button class="acc-font-btn" onclick="changeFontSize(10)" aria-label="הגדל טקסט">א+</button>
+            <button class="acc-font-btn" onclick="event.stopPropagation(); changeFontSize(10)" aria-label="הגדל טקסט">א+</button>
           </div>
         </div>
 
-        <div class="acc-option" data-feature="acc-readable-font" onclick="toggleAccessibility('acc-readable-font', this)" role="button" tabindex="0">
+        <div class="acc-option" data-feature="acc-readable-font" onclick="toggleAccessibility('acc-readable-font', this, event)" role="button" tabindex="0">
           <span class="acc-option-label">
             <svg viewBox="0 0 24 24"><path d="M9.93 13.5h4.14L12 7.98 9.93 13.5zM20 2H4c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-4.05 16.5l-1.14-3H9.17l-1.12 3H5.96l5.11-13h1.86l5.11 13h-2.09z"/></svg>
             פונט קריא
@@ -1753,7 +1759,7 @@ body.acc-focus-highlight *:focus {
           <div class="acc-toggle-switch"></div>
         </div>
 
-        <div class="acc-option" data-feature="acc-line-height" onclick="toggleAccessibility('acc-line-height', this)" role="button" tabindex="0">
+        <div class="acc-option" data-feature="acc-line-height" onclick="toggleAccessibility('acc-line-height', this, event)" role="button" tabindex="0">
           <span class="acc-option-label">
             <svg viewBox="0 0 24 24"><path d="M6 7h2.5L5 3.5 1.5 7H4v10H1.5L5 20.5 8.5 17H6V7zm4-2v2h12V5H10zm0 14h12v-2H10v2zm0-6h12v-2H10v2z"/></svg>
             מרווח שורות
@@ -1761,7 +1767,7 @@ body.acc-focus-highlight *:focus {
           <div class="acc-toggle-switch"></div>
         </div>
 
-        <div class="acc-option" data-feature="acc-letter-spacing" onclick="toggleAccessibility('acc-letter-spacing', this)" role="button" tabindex="0">
+        <div class="acc-option" data-feature="acc-letter-spacing" onclick="toggleAccessibility('acc-letter-spacing', this, event)" role="button" tabindex="0">
           <span class="acc-option-label">
             <svg viewBox="0 0 24 24"><path d="M6 17l3-3H7V9h2l-3-3-3 3h2v5H3l3 3zm9-10h6l-3-3-3 3zm0 6h6l-3 3-3-3z"/></svg>
             מרווח אותיות
@@ -1774,7 +1780,7 @@ body.acc-focus-highlight *:focus {
       <div class="acc-section">
         <div class="acc-section-title">ניווט</div>
 
-        <div class="acc-option" data-feature="acc-highlight-links" onclick="toggleAccessibility('acc-highlight-links', this)" role="button" tabindex="0">
+        <div class="acc-option" data-feature="acc-highlight-links" onclick="toggleAccessibility('acc-highlight-links', this, event)" role="button" tabindex="0">
           <span class="acc-option-label">
             <svg viewBox="0 0 24 24"><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z"/></svg>
             הדגשת קישורים
@@ -1782,7 +1788,7 @@ body.acc-focus-highlight *:focus {
           <div class="acc-toggle-switch"></div>
         </div>
 
-        <div class="acc-option" data-feature="acc-links-underline" onclick="toggleAccessibility('acc-links-underline', this)" role="button" tabindex="0">
+        <div class="acc-option" data-feature="acc-links-underline" onclick="toggleAccessibility('acc-links-underline', this, event)" role="button" tabindex="0">
           <span class="acc-option-label">
             <svg viewBox="0 0 24 24"><path d="M12 17c3.31 0 6-2.69 6-6V3h-2.5v8c0 1.93-1.57 3.5-3.5 3.5S8.5 12.93 8.5 11V3H6v8c0 3.31 2.69 6 6 6zm-7 2v2h14v-2H5z"/></svg>
             קו תחתון לקישורים
@@ -1790,7 +1796,7 @@ body.acc-focus-highlight *:focus {
           <div class="acc-toggle-switch"></div>
         </div>
 
-        <div class="acc-option" data-feature="acc-focus-highlight" onclick="toggleAccessibility('acc-focus-highlight', this)" role="button" tabindex="0">
+        <div class="acc-option" data-feature="acc-focus-highlight" onclick="toggleAccessibility('acc-focus-highlight', this, event)" role="button" tabindex="0">
           <span class="acc-option-label">
             <svg viewBox="0 0 24 24"><path d="M15 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V9l-6-6zM5 19V5h9v5h5v9H5zm4-4h6v2H9v-2zm0-4h6v2H9v-2z"/></svg>
             הדגשת פוקוס
@@ -1798,7 +1804,7 @@ body.acc-focus-highlight *:focus {
           <div class="acc-toggle-switch"></div>
         </div>
 
-        <div class="acc-option" data-feature="acc-big-cursor" onclick="toggleAccessibility('acc-big-cursor', this)" role="button" tabindex="0">
+        <div class="acc-option" data-feature="acc-big-cursor" onclick="toggleAccessibility('acc-big-cursor', this, event)" role="button" tabindex="0">
           <span class="acc-option-label">
             <svg viewBox="0 0 24 24"><path d="M13.64 21.97L9.5 17.83l-2.65 2.65L5.86 16l8.5-8.5 4.48.99-5.2 5.2 4.14 4.14-4.14 4.14z"/></svg>
             סמן גדול
@@ -1811,7 +1817,7 @@ body.acc-focus-highlight *:focus {
       <div class="acc-section">
         <div class="acc-section-title">אחר</div>
 
-        <div class="acc-option" data-feature="acc-stop-animations" onclick="toggleAccessibility('acc-stop-animations', this)" role="button" tabindex="0">
+        <div class="acc-option" data-feature="acc-stop-animations" onclick="toggleAccessibility('acc-stop-animations', this, event)" role="button" tabindex="0">
           <span class="acc-option-label">
             <svg viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
             עצור אנימציות
@@ -2007,7 +2013,10 @@ document.addEventListener('keydown', function(e) {
   }
 });
 
-function toggleAccessibility(className, element) {
+function toggleAccessibility(className, element, event) {
+  if (event) {
+    event.stopPropagation();
+  }
   document.body.classList.toggle(className);
   element.classList.toggle('active');
   saveAccessibilitySettings();
