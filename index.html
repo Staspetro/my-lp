@@ -925,10 +925,228 @@ nav.scrolled {
 /* ─── FOOTER ─── */
 footer {
   background: var(--charcoal);
-  color: rgba(255,255,255,0.4);
+  color: rgba(255,255,255,0.6);
   font-size: 14px;
-  padding: 32px 24px;
+  padding: 40px 24px 32px;
   text-align: center;
+}
+.footer-links {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 24px;
+  margin-bottom: 20px;
+}
+.footer-links a {
+  color: rgba(255,255,255,0.7);
+  text-decoration: none;
+  transition: color 0.3s;
+}
+.footer-links a:hover {
+  color: var(--primary);
+}
+.footer-copyright {
+  color: rgba(255,255,255,0.4);
+  font-size: 13px;
+}
+.footer-copyright a {
+  color: rgba(255,255,255,0.5);
+  text-decoration: none;
+}
+.footer-copyright a:hover {
+  color: var(--primary);
+}
+
+/* ─── ACCESSIBILITY WIDGET ─── */
+.accessibility-widget {
+  position: fixed;
+  left: 20px;
+  bottom: 20px;
+  z-index: 9999;
+}
+.accessibility-toggle {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: var(--primary);
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+  transition: transform 0.3s, background 0.3s;
+}
+.accessibility-toggle:hover {
+  transform: scale(1.1);
+  background: var(--primary-dark);
+}
+.accessibility-toggle svg {
+  width: 28px;
+  height: 28px;
+  fill: white;
+}
+.accessibility-panel {
+  position: absolute;
+  bottom: 70px;
+  left: 0;
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+  padding: 24px;
+  width: 300px;
+  display: none;
+  max-height: 70vh;
+  overflow-y: auto;
+}
+.accessibility-panel.active {
+  display: block;
+  animation: slideUp 0.3s ease;
+}
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.accessibility-panel h3 {
+  font-size: 18px;
+  color: var(--charcoal);
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.accessibility-panel h3 svg {
+  width: 24px;
+  height: 24px;
+  fill: var(--primary);
+}
+.acc-option {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 0;
+  border-bottom: 1px solid #eee;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.acc-option:last-child {
+  border-bottom: none;
+}
+.acc-option:hover {
+  background: #f9f9f9;
+  margin: 0 -12px;
+  padding: 12px;
+  border-radius: 8px;
+}
+.acc-option-label {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--charcoal);
+  font-size: 14px;
+}
+.acc-option-label svg {
+  width: 20px;
+  height: 20px;
+  fill: var(--gray);
+}
+.acc-toggle-switch {
+  width: 44px;
+  height: 24px;
+  background: #ddd;
+  border-radius: 12px;
+  position: relative;
+  transition: background 0.3s;
+}
+.acc-toggle-switch::after {
+  content: '';
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background: white;
+  border-radius: 50%;
+  top: 2px;
+  left: 2px;
+  transition: transform 0.3s;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+.acc-option.active .acc-toggle-switch {
+  background: var(--primary);
+}
+.acc-option.active .acc-toggle-switch::after {
+  transform: translateX(20px);
+}
+.acc-font-controls {
+  display: flex;
+  gap: 8px;
+}
+.acc-font-btn {
+  width: 36px;
+  height: 36px;
+  border: 2px solid #ddd;
+  background: white;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 14px;
+  color: var(--charcoal);
+  transition: all 0.2s;
+}
+.acc-font-btn:hover {
+  border-color: var(--primary);
+  color: var(--primary);
+}
+.acc-reset {
+  width: 100%;
+  margin-top: 16px;
+  padding: 12px;
+  background: #f5f5f5;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  color: var(--gray);
+  transition: all 0.2s;
+}
+.acc-reset:hover {
+  background: #eee;
+  color: var(--charcoal);
+}
+
+/* Accessibility active states */
+body.high-contrast {
+  filter: contrast(1.4);
+}
+body.grayscale {
+  filter: grayscale(1);
+}
+body.negative-contrast {
+  filter: invert(1);
+}
+body.light-background * {
+  background-color: white !important;
+  color: black !important;
+}
+body.links-underline a {
+  text-decoration: underline !important;
+}
+body.readable-font * {
+  font-family: Arial, sans-serif !important;
+}
+body.highlight-links a {
+  background: yellow !important;
+  color: black !important;
+  padding: 2px 4px;
+}
+
+@media (max-width: 480px) {
+  .accessibility-panel {
+    width: 280px;
+    left: -10px;
+  }
+  .footer-links {
+    gap: 16px;
+  }
 }
 
 /* ─── REVEAL ANIMATION ─── */
@@ -1266,7 +1484,93 @@ footer {
 </section>
 
 <!-- ─── FOOTER ─── -->
-<footer>© 2026 באת לרפא ולאמן, לא לשווק — שיווק ממומן למטפלות ומאמנות בישראל</footer>
+<footer>
+  <div class="footer-links">
+    <a href="https://docs.google.com/document/d/1S8JUvmfg7ynpcp7_vhuTmR_ABzgCtCeVfK03amUoh1o/edit?usp=drive_link" target="_blank">תקנון ותנאי שימוש</a>
+    <a href="https://docs.google.com/document/d/1nKW04t5XLnAehrUfzj7WJkd-Fp1dE0a8koiNzizqJV0/edit?usp=drive_link" target="_blank">מדיניות פרטיות</a>
+    <a href="https://docs.google.com/document/d/1qDH8drPH6xaDIFV1FCZrNnNJNW7QnfakdKJ8QCpYUVk/edit?usp=drive_link" target="_blank">הצהרת נגישות</a>
+    <a href="https://docs.google.com/document/d/1_GG5r2EwsdFekt_ACFB_VWEpfM-50Ku_ApEdbCYICIM/edit?usp=drive_link" target="_blank">ביטול עסקה</a>
+  </div>
+  <div class="footer-copyright">
+    © 2026 בטר אקספיריאנס בע״מ | <a href="mailto:office@bex.org.il">office@bex.org.il</a>
+  </div>
+</footer>
+
+<!-- ─── ACCESSIBILITY WIDGET ─── -->
+<div class="accessibility-widget">
+  <button class="accessibility-toggle" aria-label="תפריט נגישות" onclick="toggleAccessibilityPanel()">
+    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <path d="M12 2C13.1 2 14 2.9 14 4C14 5.1 13.1 6 12 6C10.9 6 10 5.1 10 4C10 2.9 10.9 2 12 2ZM21 9H15V22H13V16H11V22H9V9H3V7H21V9Z"/>
+    </svg>
+  </button>
+  <div class="accessibility-panel" id="accessibilityPanel">
+    <h3>
+      <svg viewBox="0 0 24 24"><path d="M12 2C13.1 2 14 2.9 14 4C14 5.1 13.1 6 12 6C10.9 6 10 5.1 10 4C10 2.9 10.9 2 12 2ZM21 9H15V22H13V16H11V22H9V9H3V7H21V9Z"/></svg>
+      הגדרות נגישות
+    </h3>
+
+    <div class="acc-option" onclick="toggleAccessibility('high-contrast', this)">
+      <span class="acc-option-label">
+        <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.94-.49-7-3.85-7-7.93s3.06-7.44 7-7.93v15.86zm2 0V4.07c3.94.49 7 3.85 7 7.93s-3.06 7.44-7 7.93z"/></svg>
+        ניגודיות גבוהה
+      </span>
+      <div class="acc-toggle-switch"></div>
+    </div>
+
+    <div class="acc-option" onclick="toggleAccessibility('grayscale', this)">
+      <span class="acc-option-label">
+        <svg viewBox="0 0 24 24"><path d="M17.66 7.93L12 2.27 6.34 7.93c-3.12 3.12-3.12 8.19 0 11.31C7.9 20.8 9.95 21.58 12 21.58c2.05 0 4.1-.78 5.66-2.34 3.12-3.12 3.12-8.19 0-11.31zM12 19.59c-1.6 0-3.11-.62-4.24-1.76C6.62 16.69 6 15.19 6 13.59s.62-3.11 1.76-4.24L12 5.1v14.49z"/></svg>
+        גווני אפור
+      </span>
+      <div class="acc-toggle-switch"></div>
+    </div>
+
+    <div class="acc-option" onclick="toggleAccessibility('negative-contrast', this)">
+      <span class="acc-option-label">
+        <svg viewBox="0 0 24 24"><path d="M20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69zM12 18c-3.31 0-6-2.69-6-6s2.69-6 6-6 6 2.69 6 6-2.69 6-6 6zm0-10c-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4-1.79-4-4-4z"/></svg>
+        ניגודיות הפוכה
+      </span>
+      <div class="acc-toggle-switch"></div>
+    </div>
+
+    <div class="acc-option" onclick="toggleAccessibility('highlight-links', this)">
+      <span class="acc-option-label">
+        <svg viewBox="0 0 24 24"><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z"/></svg>
+        הדגשת קישורים
+      </span>
+      <div class="acc-toggle-switch"></div>
+    </div>
+
+    <div class="acc-option" onclick="toggleAccessibility('links-underline', this)">
+      <span class="acc-option-label">
+        <svg viewBox="0 0 24 24"><path d="M12 17c3.31 0 6-2.69 6-6V3h-2.5v8c0 1.93-1.57 3.5-3.5 3.5S8.5 12.93 8.5 11V3H6v8c0 3.31 2.69 6 6 6zm-7 2v2h14v-2H5z"/></svg>
+        קו תחתון לקישורים
+      </span>
+      <div class="acc-toggle-switch"></div>
+    </div>
+
+    <div class="acc-option" onclick="toggleAccessibility('readable-font', this)">
+      <span class="acc-option-label">
+        <svg viewBox="0 0 24 24"><path d="M9.93 13.5h4.14L12 7.98 9.93 13.5zM20 2H4c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-4.05 16.5l-1.14-3H9.17l-1.12 3H5.96l5.11-13h1.86l5.11 13h-2.09z"/></svg>
+        פונט קריא
+      </span>
+      <div class="acc-toggle-switch"></div>
+    </div>
+
+    <div class="acc-option" style="border-bottom: none;">
+      <span class="acc-option-label">
+        <svg viewBox="0 0 24 24"><path d="M9 4v3h5v12h3V7h5V4H9zm-6 8h3v7h3v-7h3V9H3v3z"/></svg>
+        גודל טקסט
+      </span>
+      <div class="acc-font-controls">
+        <button class="acc-font-btn" onclick="event.stopPropagation(); changeFontSize(-1)">A-</button>
+        <button class="acc-font-btn" onclick="event.stopPropagation(); changeFontSize(1)">A+</button>
+      </div>
+    </div>
+
+    <button class="acc-reset" onclick="resetAccessibility()">איפוס הגדרות</button>
+  </div>
+</div>
 
 <!-- ─── JS ─── -->
 <script>
@@ -1388,6 +1692,105 @@ document.getElementById('contact-form').addEventListener('submit', async functio
       submitBtn.disabled = false;
     }, 2000);
   }
+});
+
+// ─── ACCESSIBILITY WIDGET ───
+let currentFontSize = 100;
+
+function toggleAccessibilityPanel() {
+  const panel = document.getElementById('accessibilityPanel');
+  panel.classList.toggle('active');
+}
+
+// Close panel when clicking outside
+document.addEventListener('click', function(e) {
+  const widget = document.querySelector('.accessibility-widget');
+  const panel = document.getElementById('accessibilityPanel');
+  if (!widget.contains(e.target) && panel.classList.contains('active')) {
+    panel.classList.remove('active');
+  }
+});
+
+function toggleAccessibility(className, element) {
+  document.body.classList.toggle(className);
+  element.classList.toggle('active');
+  saveAccessibilitySettings();
+}
+
+function changeFontSize(direction) {
+  currentFontSize += direction * 10;
+  if (currentFontSize < 80) currentFontSize = 80;
+  if (currentFontSize > 150) currentFontSize = 150;
+  document.documentElement.style.fontSize = currentFontSize + '%';
+  saveAccessibilitySettings();
+}
+
+function resetAccessibility() {
+  // Remove all accessibility classes
+  const classes = ['high-contrast', 'grayscale', 'negative-contrast', 'highlight-links', 'links-underline', 'readable-font'];
+  classes.forEach(cls => document.body.classList.remove(cls));
+
+  // Reset font size
+  currentFontSize = 100;
+  document.documentElement.style.fontSize = '100%';
+
+  // Reset all toggle buttons
+  document.querySelectorAll('.acc-option').forEach(opt => opt.classList.remove('active'));
+
+  // Clear saved settings
+  localStorage.removeItem('accessibilitySettings');
+}
+
+function saveAccessibilitySettings() {
+  const settings = {
+    classes: Array.from(document.body.classList),
+    fontSize: currentFontSize
+  };
+  localStorage.setItem('accessibilitySettings', JSON.stringify(settings));
+}
+
+function loadAccessibilitySettings() {
+  const saved = localStorage.getItem('accessibilitySettings');
+  if (saved) {
+    const settings = JSON.parse(saved);
+    settings.classes.forEach(cls => {
+      if (['high-contrast', 'grayscale', 'negative-contrast', 'highlight-links', 'links-underline', 'readable-font'].includes(cls)) {
+        document.body.classList.add(cls);
+        // Find and activate corresponding toggle
+        const options = document.querySelectorAll('.acc-option');
+        options.forEach(opt => {
+          if (opt.onclick && opt.onclick.toString().includes(cls)) {
+            opt.classList.add('active');
+          }
+        });
+      }
+    });
+    if (settings.fontSize) {
+      currentFontSize = settings.fontSize;
+      document.documentElement.style.fontSize = currentFontSize + '%';
+    }
+  }
+}
+
+// Load settings on page load
+document.addEventListener('DOMContentLoaded', loadAccessibilitySettings);
+
+// Update toggle states based on body classes
+document.addEventListener('DOMContentLoaded', function() {
+  const classMap = {
+    'high-contrast': 0,
+    'grayscale': 1,
+    'negative-contrast': 2,
+    'highlight-links': 3,
+    'links-underline': 4,
+    'readable-font': 5
+  };
+  const options = document.querySelectorAll('.acc-option');
+  Object.keys(classMap).forEach(cls => {
+    if (document.body.classList.contains(cls)) {
+      options[classMap[cls]]?.classList.add('active');
+    }
+  });
 });
 </script>
 </body>
