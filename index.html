@@ -1571,6 +1571,7 @@ body.acc-focus-highlight *:focus {
 
 /* ─── RESPONSIVE ─── */
 @media (max-width: 900px) {
+  .footer-main { grid-template-columns: 1fr 1fr; gap: 40px 32px; }
   .story-inner {
     grid-template-columns: 1fr;
     gap: 48px;
@@ -1587,6 +1588,14 @@ body.acc-focus-highlight *:focus {
 }
 
 @media (max-width: 720px) {
+  .footer-main {
+    grid-template-columns: 1fr;
+    gap: 36px;
+    padding: 48px 24px 40px;
+    text-align: center;
+  }
+  .footer-col ul { align-items: center; }
+  .footer-bottom { padding: 20px 24px; }
   #nav { padding: 16px 20px; }
   #nav.scrolled { padding: 12px 20px; }
   .nav-cta { padding: 10px 20px; font-size: 14px; }
@@ -1614,6 +1623,17 @@ body.acc-focus-highlight *:focus {
 }
 
 @media (max-width: 480px) {
+  .footer-main {
+    grid-template-columns: 1fr;
+    gap: 32px;
+    padding: 48px 24px 36px;
+    text-align: center;
+  }
+  .footer-col ul { align-items: center; }
+  .footer-col ul li a { font-size: 14px; }
+  .footer-col h3 { font-size: 16px; margin-bottom: 14px; }
+  .footer-col p { font-size: 14px; }
+  .footer-bottom { padding: 20px 24px; font-size: 12px; }
   h1 { font-size: 28px; }
   h2 { font-size: 22px; }
   .hero { padding: 90px 16px 50px; }
