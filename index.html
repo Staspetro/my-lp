@@ -520,6 +520,53 @@ nav.scrolled {
   margin: 0;
 }
 
+/* ─── STORY MISSION ─── */
+.story-mission {
+  max-width: 760px;
+  margin: 72px auto 0;
+  background: linear-gradient(135deg, var(--sage-pale), rgba(253,246,227,0.5));
+  border: 1px solid rgba(94,155,107,0.15);
+  border-radius: var(--radius-lg);
+  padding: 48px 44px;
+  position: relative;
+  overflow: hidden;
+}
+.story-mission::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--sage), var(--sage-light), var(--gold));
+}
+.story-mission-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--charcoal);
+  margin-bottom: 8px;
+}
+.story-mission-subtitle {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--sage);
+  font-style: italic;
+  margin-bottom: 28px;
+}
+.story-mission p {
+  font-size: 16px;
+  line-height: 1.9;
+  color: var(--warm-gray);
+  margin-bottom: 18px;
+}
+.story-mission p:last-child {
+  margin-bottom: 0;
+}
+.story-mission p strong {
+  color: var(--charcoal);
+  font-weight: 700;
+}
+
 /* ─── HOW IT WORKS ─── */
 .how {
   padding: 120px 24px;
@@ -1526,6 +1573,7 @@ body.acc-focus-highlight *:focus {
   .form-section { padding: 60px 20px; }
   .pain-grid { grid-template-columns: 1fr; }
   .pain-card { padding: 28px 24px; }
+  .story-mission { padding: 36px 28px; margin-top: 48px; }
   .steps::before { right: 23px; }
   .step { grid-template-columns: 48px 1fr; gap: 16px; }
   .step-dot { width: 48px; height: 48px; font-size: 16px; }
@@ -1557,6 +1605,10 @@ body.acc-focus-highlight *:focus {
   .step-body h3 { font-size: 17px; }
   .step-body p { font-size: 14px; }
   .pain-card { padding: 24px 20px; }
+  .story-mission { padding: 28px 20px; margin-top: 36px; }
+  .story-mission-title { font-size: 19px; }
+  .story-mission-subtitle { font-size: 16px; }
+  .story-mission p { font-size: 15px; }
   .form-card { padding: 28px 20px; }
   .roi-card { padding: 28px 20px; }
   .badge { padding: 8px 16px; font-size: 13px; }
@@ -1685,6 +1737,14 @@ body.acc-focus-highlight *:focus {
         <p>הנכסים שלך — נשארים שלך לתמיד</p>
       </div>
     </div>
+  </div>
+
+  <div class="story-mission reveal">
+    <div class="story-mission-title">למה אני עושה את זה?</div>
+    <div class="story-mission-subtitle">כי אני מאמין שכל אחד מאיתנו ראוי למסע הפנימי הזה.</div>
+    <p>עולם הטיפול והאימון הוא לא עוד "טרנד" או מותרות לבעלי האמצעים. זה תחום נפלא, חיוני, שבו כל אחד צריך שיהיה לו מישהו שילווה אותו — כדי לגלות עולמות פנימיים חבויים, כדי לרפא, וכדי לצמוח. <strong>במיוחד בישראל, עם כל הקשיים שאנחנו עוברים פה, במיוחד אחרי השביעי באוקטובר</strong> — זה לא רק "נחמד לעשות", זה הכרחי.</p>
+    <p>אני לא מטפל. אבל בחרתי לקדם את התחום הזה מתוך אמונה עמוקה שכולנו זקוקים לו. כי שינוי אמיתי מתחיל כשאנשים מקבלים את הליווי שמגיע להם.</p>
+    <p><strong>ואני כאן בשביל לוודא שזה יקרה — למטפלים שמעניקים את זה, ולאנשים שזקוקים לזה.</strong></p>
   </div>
 </section>
 
