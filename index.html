@@ -895,6 +895,34 @@ nav.scrolled {
 }
 .form-group input::placeholder { color: var(--light-gray); }
 
+.form-consent {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin-bottom: 24px;
+  cursor: pointer;
+}
+.form-consent input[type="checkbox"] {
+  width: 20px;
+  height: 20px;
+  min-width: 20px;
+  margin-top: 2px;
+  accent-color: var(--sage);
+  cursor: pointer;
+}
+.form-consent label {
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--warm-gray);
+  cursor: pointer;
+  user-select: none;
+}
+.form-consent label a {
+  color: var(--sage);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
 .form-submit {
   width: 100%;
   background: linear-gradient(135deg, var(--charcoal), var(--charcoal-light));
@@ -1821,6 +1849,11 @@ body.acc-focus-highlight *:focus {
         </select>
       </div>
 
+      <div class="form-consent">
+        <input type="checkbox" id="consent" name="consent" required>
+        <label for="consent">אני מאשרת קבלת דיוור פרסומי, עדכונים ותוכן שיווקי. ניתן להסיר את עצמך בכל עת. <a href="privacy.html">מדיניות פרטיות</a></label>
+      </div>
+
       <button type="submit" class="form-submit">לשלוח את הפרטים שלי ←</button>
     </form>
     <div class="form-privacy">🔒 הפרטים שלך בטוחים. תמיד.</div>
@@ -2041,6 +2074,7 @@ document.getElementById('contact-form').addEventListener('submit', async functio
   const phone = document.getElementById('phone').value;
   const profession = document.getElementById('profession').value;
   const clients = document.getElementById('clients').value;
+  const consent = document.getElementById('consent').checked ? 'כן' : 'לא';
 
   // Disable button and show loading
   submitBtn.disabled = true;
@@ -2059,48 +2093,36 @@ document.getElementById('contact-form').addEventListener('submit', async functio
         phone: phone,
         profession: profession,
         clients: clients,
+        consent_marketing: consent,
         _subject: `פנייה חדשה מ-${name} - ${profession}`
       })
     });
 
-    // 2. Send to Google Sheets via hidden form (bypasses CORS completely)
+    // 2. Send to Google Sheets via hidden form in iframe
     const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwBTLWsGitdAOESFliWhVfteQrI43ysm2zu0AfCQC91dwsa_VltlHySZA5-KgvXIxaY/exec';
     if (GOOGLE_SCRIPT_URL) {
       try {
-        const iframe = document.createElement('iframe');
-        iframe.name = 'sheets_iframe';
-        iframe.style.display = 'none';
-        document.body.appendChild(iframe);
+        // Create hidden iframe
+        let sheetsIframe = document.getElementById('sheets_iframe');
+        if (!sheetsIframe) {
+          sheetsIframe = document.createElement('iframe');
+          sheetsIframe.id = 'sheets_iframe';
+          sheetsIframe.name = 'sheets_iframe';
+          sheetsIframe.style.display = 'none';
+          document.body.appendChild(sheetsIframe);
+        }
 
-        const sheetForm = document.createElement('form');
-        sheetForm.method = 'POST';
-        sheetForm.action = GOOGLE_SCRIPT_URL;
-        sheetForm.target = 'sheets_iframe';
-
-        const fields = {
-          timestamp: new Date().toLocaleString('he-IL'),
-          name: name,
-          phone: phone,
-          profession: profession,
-          clients: clients
-        };
-
-        Object.entries(fields).forEach(([key, value]) => {
-          const input = document.createElement('input');
-          input.type = 'hidden';
-          input.name = key;
-          input.value = value;
-          sheetForm.appendChild(input);
-        });
-
-        document.body.appendChild(sheetForm);
-        sheetForm.submit();
-
-        // Cleanup after submission
-        setTimeout(() => {
-          document.body.removeChild(sheetForm);
-          document.body.removeChild(iframe);
-        }, 3000);
+        // Build the form inside the page (not dynamically)
+        const sheetFormEl = document.getElementById('hidden-sheet-form');
+        if (sheetFormEl) {
+          sheetFormEl.querySelector('[name="timestamp"]').value = new Date().toLocaleString('he-IL');
+          sheetFormEl.querySelector('[name="name"]').value = name;
+          sheetFormEl.querySelector('[name="phone"]').value = phone;
+          sheetFormEl.querySelector('[name="profession"]').value = profession;
+          sheetFormEl.querySelector('[name="clients"]').value = clients;
+          sheetFormEl.querySelector('[name="consent"]').value = consent;
+          sheetFormEl.submit();
+        }
       } catch (sheetError) {
         console.error('Google Sheets error:', sheetError);
       }
@@ -2339,6 +2361,17 @@ function loadAccessibilitySettings() {
 // Load settings on page load
 document.addEventListener('DOMContentLoaded', loadAccessibilitySettings);
 </script>
+
+<!-- Hidden form for Google Sheets (submitted via iframe to bypass CORS) -->
+<iframe id="sheets_iframe" name="sheets_iframe" style="display:none;"></iframe>
+<form id="hidden-sheet-form" method="POST" action="https://script.google.com/macros/s/AKfycbwBTLWsGitdAOESFliWhVfteQrI43ysm2zu0AfCQC91dwsa_VltlHySZA5-KgvXIxaY/exec" target="sheets_iframe" style="display:none;">
+  <input type="hidden" name="timestamp" value="">
+  <input type="hidden" name="name" value="">
+  <input type="hidden" name="phone" value="">
+  <input type="hidden" name="profession" value="">
+  <input type="hidden" name="clients" value="">
+  <input type="hidden" name="consent" value="">
+</form>
 
 <!-- Success Popup -->
 <div class="success-overlay" id="successOverlay">
