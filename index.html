@@ -2098,31 +2098,23 @@ document.getElementById('contact-form').addEventListener('submit', async functio
       })
     });
 
-    // 2. Send to Google Sheets via hidden form in iframe
+    // 2. Send to Google Sheets via fetch text/plain
     const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwoN1NU-DyxJPE2A_dLVClkERrU8dWUAXDLMIPWININTt1rhsUBbLczdGEOc_J77xaL/exec';
     if (GOOGLE_SCRIPT_URL) {
       try {
-        // Create hidden iframe
-        let sheetsIframe = document.getElementById('sheets_iframe');
-        if (!sheetsIframe) {
-          sheetsIframe = document.createElement('iframe');
-          sheetsIframe.id = 'sheets_iframe';
-          sheetsIframe.name = 'sheets_iframe';
-          sheetsIframe.style.display = 'none';
-          document.body.appendChild(sheetsIframe);
-        }
-
-        // Build the form inside the page (not dynamically)
-        const sheetFormEl = document.getElementById('hidden-sheet-form');
-        if (sheetFormEl) {
-          sheetFormEl.querySelector('[name="timestamp"]').value = new Date().toLocaleString('he-IL');
-          sheetFormEl.querySelector('[name="name"]').value = name;
-          sheetFormEl.querySelector('[name="phone"]').value = phone;
-          sheetFormEl.querySelector('[name="profession"]').value = profession;
-          sheetFormEl.querySelector('[name="clients"]').value = clients;
-          sheetFormEl.querySelector('[name="consent"]').value = consent;
-          sheetFormEl.submit();
-        }
+        fetch(GOOGLE_SCRIPT_URL, {
+          method: 'POST',
+          mode: 'no-cors',
+          headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+          body: JSON.stringify({
+            timestamp: new Date().toLocaleString('he-IL'),
+            name: name,
+            phone: phone,
+            profession: profession,
+            clients: clients,
+            consent: consent
+          })
+        });
       } catch (sheetError) {
         console.error('Google Sheets error:', sheetError);
       }
@@ -2361,17 +2353,6 @@ function loadAccessibilitySettings() {
 // Load settings on page load
 document.addEventListener('DOMContentLoaded', loadAccessibilitySettings);
 </script>
-
-<!-- Hidden form for Google Sheets (submitted via iframe to bypass CORS) -->
-<iframe id="sheets_iframe" name="sheets_iframe" style="display:none;"></iframe>
-<form id="hidden-sheet-form" method="POST" action="https://script.google.com/macros/s/AKfycbwoN1NU-DyxJPE2A_dLVClkERrU8dWUAXDLMIPWININTt1rhsUBbLczdGEOc_J77xaL/exec" target="sheets_iframe" style="display:none;">
-  <input type="hidden" name="timestamp" value="">
-  <input type="hidden" name="name" value="">
-  <input type="hidden" name="phone" value="">
-  <input type="hidden" name="profession" value="">
-  <input type="hidden" name="clients" value="">
-  <input type="hidden" name="consent" value="">
-</form>
 
 <!-- Success Popup -->
 <div class="success-overlay" id="successOverlay">
