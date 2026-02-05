@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>ביטול עסקה – בטר אקספיריאנס בע״מ</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --cream: #FDFBF7;
+  --cream-dark: #F5F1EA;
+  --white: #FFFFFF;
+  --sage: #5E9B6B;
+  --sage-light: #8BC49A;
+  --sage-deep: #3D7A4A;
+  --charcoal: #1A1A2E;
+  --charcoal-light: #2D2D44;
+  --warm-gray: #5A5A6E;
+  --light-gray: #8E8E9F;
+  --border: #E8E4DD;
+  --shadow-sm: 0 2px 8px rgba(26,26,46,0.06);
+  --shadow-md: 0 8px 32px rgba(26,26,46,0.10);
+  --radius-md: 20px;
+  --transition-smooth: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+body {
+  font-family: 'Open Sans', sans-serif;
+  background: var(--cream);
+  color: var(--charcoal);
+  -webkit-font-smoothing: antialiased;
+  line-height: 1.8;
+}
+a { text-decoration:none; color:inherit; }
+nav {
+  position:fixed; top:0; left:0; right:0; z-index:100;
+  padding: 18px 48px;
+  display:flex; align-items:center; justify-content:space-between;
+  background: rgba(253,251,247,0.95);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border);
+  box-shadow: var(--shadow-sm);
+}
+.nav-logo {
+  font-size: 22px;
+  font-weight: 800;
+  color: var(--charcoal);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.nav-logo .logo-icon {
+  width: 36px;
+  height: 36px;
+  background: linear-gradient(135deg, var(--sage), var(--sage-deep));
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 16px;
+  font-weight: 700;
+}
+.back-btn {
+  background: var(--charcoal);
+  color: white;
+  padding: 12px 24px;
+  border-radius: 30px;
+  font-weight: 600;
+  font-size: 14px;
+  transition: all 0.3s;
+}
+.back-btn:hover {
+  background: var(--sage);
+  transform: translateY(-2px);
+}
+.legal-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 120px 24px 60px;
+}
+.legal-header {
+  text-align: center;
+  margin-bottom: 48px;
+}
+.legal-header h1 {
+  font-size: 36px;
+  color: var(--charcoal);
+  margin-bottom: 16px;
+}
+.legal-header .update-date {
+  color: var(--light-gray);
+  font-size: 14px;
+}
+.legal-content {
+  background: var(--white);
+  border-radius: var(--radius-md);
+  padding: 48px;
+  box-shadow: var(--shadow-md);
+}
+.legal-content h2 {
+  font-size: 22px;
+  color: var(--charcoal);
+  margin: 32px 0 16px;
+  padding-bottom: 12px;
+  border-bottom: 2px solid var(--sage-light);
+}
+.legal-content h2:first-child {
+  margin-top: 0;
+}
+.legal-content p {
+  color: var(--warm-gray);
+  margin-bottom: 16px;
+  font-size: 16px;
+}
+.legal-content ul {
+  margin: 16px 0;
+  padding-right: 24px;
+}
+.legal-content li {
+  color: var(--warm-gray);
+  margin-bottom: 12px;
+  font-size: 16px;
+}
+.legal-content strong {
+  color: var(--charcoal);
+}
+.contact-methods {
+  background: var(--cream);
+  border-radius: 12px;
+  padding: 24px;
+  margin: 24px 0;
+}
+.contact-methods p {
+  margin-bottom: 12px;
+}
+.contact-methods a {
+  color: var(--sage);
+  text-decoration: underline;
+}
+footer {
+  background: var(--charcoal);
+  color: rgba(255,255,255,0.6);
+  font-size: 14px;
+  padding: 40px 24px 32px;
+  text-align: center;
+}
+.footer-links {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 24px;
+  margin-bottom: 20px;
+}
+.footer-links a {
+  color: rgba(255,255,255,0.7);
+  transition: color 0.3s;
+}
+.footer-links a:hover {
+  color: var(--sage-light);
+}
+.footer-copyright {
+  color: rgba(255,255,255,0.4);
+  font-size: 13px;
+}
+.footer-copyright a {
+  color: rgba(255,255,255,0.5);
+}
+@media (max-width: 768px) {
+  nav { padding: 16px 20px; }
+  .legal-container { padding: 100px 16px 40px; }
+  .legal-content { padding: 32px 24px; }
+  .legal-header h1 { font-size: 28px; }
+  .footer-links { gap: 16px; }
+}
+
+/* ─── ACCESSIBILITY WIDGET ─── */
+.accessibility-widget {
+  position: fixed;
+  left: 20px;
+  bottom: 40px;
+  z-index: 999999;
+  font-family: 'Open Sans', Arial, sans-serif;
+}
+.accessibility-toggle {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #1565C0, #0D47A1);
+  border: 3px solid #fff;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.4), 0 0 0 2px rgba(21,101,192,0.3);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+.accessibility-toggle:hover {
+  transform: scale(1.1);
+  box-shadow: 0 6px 30px rgba(0,0,0,0.5), 0 0 0 4px rgba(21,101,192,0.4);
+}
+.accessibility-toggle:focus {
+  outline: 3px solid #FFC107;
+  outline-offset: 3px;
+}
+.accessibility-toggle svg {
+  width: 32px;
+  height: 32px;
+  fill: white;
+}
+.accessibility-toggle-label {
+  position: absolute;
+  bottom: -24px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 11px;
+  color: #1565C0;
+  background: white;
+  padding: 2px 8px;
+  border-radius: 10px;
+  white-space: nowrap;
+  font-weight: 600;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+}
+.accessibility-panel {
+  position: absolute;
+  bottom: 75px;
+  left: 0;
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 10px 50px rgba(0,0,0,0.25), 0 0 0 1px rgba(0,0,0,0.05);
+  padding: 0;
+  width: 320px;
+  display: none;
+  max-height: 80vh;
+  overflow: hidden;
+  border: 2px solid #1565C0;
+}
+.accessibility-panel.active {
+  display: block;
+  animation: accSlideUp 0.3s ease;
+}
+@keyframes accSlideUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.acc-header {
+  background: linear-gradient(135deg, #1565C0, #0D47A1);
+  color: white;
+  padding: 16px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.acc-header h3 {
+  font-size: 16px;
+  font-weight: 700;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: white;
+}
+.acc-header h3 svg {
+  width: 24px;
+  height: 24px;
+  fill: white;
+}
+.acc-close {
+  background: rgba(255,255,255,0.2);
+  border: none;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s;
+}
+.acc-close:hover {
+  background: rgba(255,255,255,0.3);
+}
+.acc-close svg {
+  width: 18px;
+  height: 18px;
+  fill: white;
+}
+.acc-body {
+  padding: 16px;
+  max-height: 50vh;
+  overflow-y: auto;
+}
+.acc-section {
+  margin-bottom: 16px;
+}
+.acc-section-title {
+  font-size: 12px;
+  font-weight: 700;
+  color: #666;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 10px;
+  padding-bottom: 6px;
+  border-bottom: 2px solid #e0e0e0;
+}
+.acc-option {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 12px;
+  margin: 4px 0;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background 0.2s;
+  background: #f8f9fa;
+  border: 1px solid transparent;
+}
+.acc-option:hover {
+  background: #e3f2fd;
+  border-color: #1565C0;
+}
+.acc-option.active {
+  background: #e3f2fd;
+  border-color: #1565C0;
+}
+.acc-option-label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #333;
+  font-size: 13px;
+  font-weight: 500;
+}
+.acc-option-label svg {
+  width: 24px;
+  height: 24px;
+  fill: #1565C0;
+  background: #e3f2fd;
+  padding: 4px;
+  border-radius: 6px;
+  flex-shrink: 0;
+}
+.acc-toggle-switch {
+  width: 42px;
+  height: 22px;
+  background: #ccc;
+  border-radius: 11px;
+  position: relative;
+  transition: background 0.3s;
+  flex-shrink: 0;
+}
+.acc-toggle-switch::after {
+  content: '';
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  background: white;
+  border-radius: 50%;
+  top: 2px;
+  left: 2px;
+  transition: transform 0.3s;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+.acc-option.active .acc-toggle-switch {
+  background: #1565C0;
+}
+.acc-option.active .acc-toggle-switch::after {
+  transform: translateX(20px);
+}
+.acc-font-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 12px;
+  background: #f8f9fa;
+  border-radius: 10px;
+  margin: 4px 0;
+}
+.acc-font-label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #333;
+  font-size: 13px;
+  font-weight: 500;
+}
+.acc-font-label svg {
+  width: 24px;
+  height: 24px;
+  fill: #1565C0;
+  background: #e3f2fd;
+  padding: 4px;
+  border-radius: 6px;
+}
+.acc-font-controls {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.acc-font-btn {
+  width: 32px;
+  height: 32px;
+  border: 2px solid #1565C0;
+  background: white;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 14px;
+  color: #1565C0;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.acc-font-btn:hover {
+  background: #1565C0;
+  color: white;
+}
+.acc-font-display {
+  min-width: 45px;
+  text-align: center;
+  font-weight: 600;
+  color: #333;
+  font-size: 13px;
+}
+.acc-footer {
+  padding: 12px 16px;
+  background: #f5f5f5;
+  border-top: 1px solid #e0e0e0;
+}
+.acc-reset {
+  width: 100%;
+  padding: 12px;
+  background: #f44336;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+  transition: background 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+.acc-reset:hover {
+  background: #d32f2f;
+}
+.acc-reset svg {
+  width: 18px;
+  height: 18px;
+  fill: white;
+}
+.acc-info {
+  font-size: 11px;
+  color: #888;
+  text-align: center;
+  margin-top: 10px;
+}
+.acc-info a {
+  color: #1565C0;
+  text-decoration: underline;
+}
+body.acc-high-contrast { filter: contrast(1.5) !important; }
+body.acc-high-contrast .accessibility-widget { filter: contrast(0.67); }
+body.acc-grayscale { filter: grayscale(1) !important; }
+body.acc-grayscale .accessibility-widget { filter: grayscale(0); }
+body.acc-negative { filter: invert(1) hue-rotate(180deg) !important; }
+body.acc-negative .accessibility-widget { filter: invert(1) hue-rotate(180deg); }
+body.acc-links-underline a { text-decoration: underline !important; text-underline-offset: 3px !important; }
+body.acc-readable-font, body.acc-readable-font * { font-family: Arial, Helvetica, sans-serif !important; letter-spacing: 0.03em !important; }
+body.acc-highlight-links a { background: #FFEB3B !important; color: #000 !important; padding: 2px 6px !important; border-radius: 3px !important; }
+body.acc-big-cursor, body.acc-big-cursor * { cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='48' height='48' viewBox='0 0 24 24'%3E%3Cpath fill='%23000' stroke='%23fff' stroke-width='1' d='M4 4l16 8-7 2-2 7z'/%3E%3C/svg%3E"), auto !important; }
+body.acc-stop-animations, body.acc-stop-animations * { animation: none !important; transition: none !important; }
+body.acc-line-height, body.acc-line-height * { line-height: 2 !important; }
+body.acc-letter-spacing, body.acc-letter-spacing * { letter-spacing: 0.12em !important; word-spacing: 0.2em !important; }
+body.acc-focus-highlight *:focus { outline: 3px solid #FF5722 !important; outline-offset: 3px !important; }
+@media (max-width: 480px) {
+  .accessibility-widget { left: 10px; bottom: 30px; }
+  .accessibility-toggle { width: 52px; height: 52px; }
+  .accessibility-panel { width: calc(100vw - 20px); left: 0; max-width: 320px; }
+  .acc-toggle-label { display: none; }
+}
+
+</style>
+</head>
+<body>
+<nav>
+  <a href="index.html" class="nav-logo">
+    <span class="logo-icon">ס</span>
+    בטר אקספיריאנס
+  </a>
+  <a href="index.html" class="back-btn">← חזרה לאתר</a>
+</nav>
+
+<div class="legal-container">
+  <div class="legal-header">
+    <h1>הודעה על ביטול עסקה</h1>
+    <p class="update-date">בהתאם לחוק הגנת הצרכן</p>
+  </div>
+
+  <div class="legal-content">
+    <p>לקוחות יקרים, בהתאם לחוק הגנת הצרכן, הנכם רשאים לבטל עסקה שביצעתם באתר "בטר אקספיריאנס בע״מ". כדי להקל עליכם, ניתן לשלוח הודעת ביטול באחת הדרכים הבאות:</p>
+
+    <h2>פרטים שיש למסור בעת הודעת הביטול</h2>
+    <p>כדי שנוכל לזהות את העסקה ולטפל בבקשה במהירות, אנא ציינו בהודעתכם:</p>
+    <ul>
+      <li>שם מלא של הלקוח</li>
+      <li>מספר תעודת זהות / ח.פ.</li>
+      <li>מספר טלפון ליצירת קשר</li>
+      <li>שם השירות/הקורס שנרכש</li>
+    </ul>
+
+    <h2>דרכי שליחת הודעת ביטול</h2>
+    <div class="contact-methods">
+      <p><strong>באמצעות דואר אלקטרוני (מומלץ):</strong><br>
+      <a href="mailto:office@bex.org.il">office@bex.org.il</a></p>
+
+      <p><strong>באמצעות טלפון/וואטסאפ:</strong><br>
+      <a href="tel:054-7716292">054-7716292</a></p>
+
+      <p><strong>באמצעות דואר רשום:</strong><br>
+      לכתובת הרשמית של החברה: רחוב הצייר צבי שור 18, פתח תקווה, 4921032</p>
+    </div>
+
+    <h2>עיקרי מדיניות הביטול (בהתאם לתקנון)</h2>
+    <ul>
+      <li>ביטול שירותי פרסום ממומן (ריטיינר) ייכנס לתוקף בסיום תקופת החיוב הנוכחית.</li>
+      <li>לא יינתן החזר כספי בגין החודש שבו כבר החלה העבודה בפועל.</li>
+      <li>במידה ומדובר במוצר דיגיטלי (קורס) שנפתח לצפייה, הביטול כפוף להוראות חוק הגנת הצרכן לעניין "מידע הניתן להעתקה או שכפול".</li>
+    </ul>
+
+    <p style="margin-top: 32px; padding: 20px; background: var(--sage-pale); border-radius: 12px; text-align: center;">
+      <strong style="color: var(--sage-deep);">אנו זמינים לכל שאלה ונעשה את מירב המאמצים לטפל בבקשתכם תוך זמן קצר.</strong>
+    </p>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-links">
+    <a href="terms.html">תקנון ותנאי שימוש</a>
+    <a href="privacy.html">מדיניות פרטיות</a>
+    <a href="accessibility.html">הצהרת נגישות</a>
+    <a href="cancellation.html">ביטול עסקה</a>
+  </div>
+  <div class="footer-copyright">
+    © 2026 בטר אקספיריאנס בע״מ | <a href="mailto:office@bex.org.il">office@bex.org.il</a>
+  </div>
+</footer>
+
+<!-- ─── ACCESSIBILITY WIDGET ─── -->
+<div class="accessibility-widget" id="accessibilityWidget">
+  <button class="accessibility-toggle" aria-label="פתח תפריט נגישות" onclick="toggleAccessibilityPanel()">
+    <svg viewBox="0 0 24 24"><path d="M12 2C13.1 2 14 2.9 14 4C14 5.1 13.1 6 12 6C10.9 6 10 5.1 10 4C10 2.9 10.9 2 12 2ZM21 9H15V22H13V16H11V22H9V9H3V7H21V9Z"/></svg>
+    <span class="accessibility-toggle-label">נגישות</span>
+  </button>
+  <div class="accessibility-panel" id="accessibilityPanel" role="dialog" aria-label="הגדרות נגישות">
+    <div class="acc-header">
+      <h3><svg viewBox="0 0 24 24"><path d="M12 2C13.1 2 14 2.9 14 4C14 5.1 13.1 6 12 6C10.9 6 10 5.1 10 4C10 2.9 10.9 2 12 2ZM21 9H15V22H13V16H11V22H9V9H3V7H21V9Z"/></svg>הגדרות נגישות</h3>
+      <button class="acc-close" onclick="toggleAccessibilityPanel()"><svg viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg></button>
+    </div>
+    <div class="acc-body">
+      <div class="acc-section">
+        <div class="acc-section-title">תצוגה</div>
+        <div class="acc-option" data-feature="acc-high-contrast" onclick="toggleAccessibility('acc-high-contrast', this, event)"><span class="acc-option-label"><svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.94-.49-7-3.85-7-7.93s3.06-7.44 7-7.93v15.86zm2 0V4.07c3.94.49 7 3.85 7 7.93s-3.06 7.44-7 7.93z"/></svg>ניגודיות גבוהה</span><div class="acc-toggle-switch"></div></div>
+        <div class="acc-option" data-feature="acc-grayscale" onclick="toggleAccessibility('acc-grayscale', this, event)"><span class="acc-option-label"><svg viewBox="0 0 24 24"><path d="M17.66 7.93L12 2.27 6.34 7.93c-3.12 3.12-3.12 8.19 0 11.31C7.9 20.8 9.95 21.58 12 21.58c2.05 0 4.1-.78 5.66-2.34 3.12-3.12 3.12-8.19 0-11.31zM12 19.59c-1.6 0-3.11-.62-4.24-1.76C6.62 16.69 6 15.19 6 13.59s.62-3.11 1.76-4.24L12 5.1v14.49z"/></svg>גווני אפור</span><div class="acc-toggle-switch"></div></div>
+        <div class="acc-option" data-feature="acc-negative" onclick="toggleAccessibility('acc-negative', this, event)"><span class="acc-option-label"><svg viewBox="0 0 24 24"><path d="M20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69zM12 18c-3.31 0-6-2.69-6-6s2.69-6 6-6 6 2.69 6 6-2.69 6-6 6z"/></svg>ניגודיות הפוכה</span><div class="acc-toggle-switch"></div></div>
+      </div>
+      <div class="acc-section">
+        <div class="acc-section-title">תוכן</div>
+        <div class="acc-font-row"><span class="acc-font-label"><svg viewBox="0 0 24 24"><path d="M9 4v3h5v12h3V7h5V4H9zm-6 8h3v7h3v-7h3V9H3v3z"/></svg>גודל טקסט</span><div class="acc-font-controls"><button class="acc-font-btn" onclick="event.stopPropagation(); changeFontSize(-10)">א-</button><span class="acc-font-display" id="fontSizeDisplay">100%</span><button class="acc-font-btn" onclick="event.stopPropagation(); changeFontSize(10)">א+</button></div></div>
+        <div class="acc-option" data-feature="acc-readable-font" onclick="toggleAccessibility('acc-readable-font', this, event)"><span class="acc-option-label"><svg viewBox="0 0 24 24"><path d="M9.93 13.5h4.14L12 7.98 9.93 13.5zM20 2H4c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-4.05 16.5l-1.14-3H9.17l-1.12 3H5.96l5.11-13h1.86l5.11 13h-2.09z"/></svg>פונט קריא</span><div class="acc-toggle-switch"></div></div>
+        <div class="acc-option" data-feature="acc-line-height" onclick="toggleAccessibility('acc-line-height', this, event)"><span class="acc-option-label"><svg viewBox="0 0 24 24"><path d="M6 7h2.5L5 3.5 1.5 7H4v10H1.5L5 20.5 8.5 17H6V7zm4-2v2h12V5H10zm0 14h12v-2H10v2zm0-6h12v-2H10v2z"/></svg>מרווח שורות</span><div class="acc-toggle-switch"></div></div>
+        <div class="acc-option" data-feature="acc-letter-spacing" onclick="toggleAccessibility('acc-letter-spacing', this, event)"><span class="acc-option-label"><svg viewBox="0 0 24 24"><path d="M6 17l3-3H7V9h2l-3-3-3 3h2v5H3l3 3zm9-10h6l-3-3-3 3zm0 6h6l-3 3-3-3z"/></svg>מרווח אותיות</span><div class="acc-toggle-switch"></div></div>
+      </div>
+      <div class="acc-section">
+        <div class="acc-section-title">ניווט</div>
+        <div class="acc-option" data-feature="acc-highlight-links" onclick="toggleAccessibility('acc-highlight-links', this, event)"><span class="acc-option-label"><svg viewBox="0 0 24 24"><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z"/></svg>הדגשת קישורים</span><div class="acc-toggle-switch"></div></div>
+        <div class="acc-option" data-feature="acc-links-underline" onclick="toggleAccessibility('acc-links-underline', this, event)"><span class="acc-option-label"><svg viewBox="0 0 24 24"><path d="M12 17c3.31 0 6-2.69 6-6V3h-2.5v8c0 1.93-1.57 3.5-3.5 3.5S8.5 12.93 8.5 11V3H6v8c0 3.31 2.69 6 6 6zm-7 2v2h14v-2H5z"/></svg>קו תחתון לקישורים</span><div class="acc-toggle-switch"></div></div>
+        <div class="acc-option" data-feature="acc-focus-highlight" onclick="toggleAccessibility('acc-focus-highlight', this, event)"><span class="acc-option-label"><svg viewBox="0 0 24 24"><path d="M15 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V9l-6-6zM5 19V5h9v5h5v9H5z"/></svg>הדגשת פוקוס</span><div class="acc-toggle-switch"></div></div>
+        <div class="acc-option" data-feature="acc-big-cursor" onclick="toggleAccessibility('acc-big-cursor', this, event)"><span class="acc-option-label"><svg viewBox="0 0 24 24"><path d="M13.64 21.97L9.5 17.83l-2.65 2.65L5.86 16l8.5-8.5 4.48.99-5.2 5.2 4.14 4.14-4.14 4.14z"/></svg>סמן גדול</span><div class="acc-toggle-switch"></div></div>
+      </div>
+      <div class="acc-section">
+        <div class="acc-section-title">אחר</div>
+        <div class="acc-option" data-feature="acc-stop-animations" onclick="toggleAccessibility('acc-stop-animations', this, event)"><span class="acc-option-label"><svg viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>עצור אנימציות</span><div class="acc-toggle-switch"></div></div>
+      </div>
+    </div>
+    <div class="acc-footer">
+      <button class="acc-reset" onclick="event.stopPropagation(); resetAccessibility()"><svg viewBox="0 0 24 24"><path d="M12.5 8c-2.65 0-5.05.99-6.9 2.6L2 7v9h9l-3.62-3.62c1.39-1.16 3.16-1.88 5.12-1.88 3.54 0 6.55 2.31 7.6 5.5l2.37-.78C21.08 11.03 17.15 8 12.5 8z"/></svg>איפוס הגדרות</button>
+      <p class="acc-info">תקן IS 5568 | WCAG 2.0 AA<br><a href="accessibility.html">הצהרת נגישות</a></p>
+    </div>
+  </div>
+</div>
+
+<script>
+let currentFontSize = 100;
+const accFeatures = ['acc-high-contrast','acc-grayscale','acc-negative','acc-readable-font','acc-line-height','acc-letter-spacing','acc-highlight-links','acc-links-underline','acc-focus-highlight','acc-big-cursor','acc-stop-animations'];
+function toggleAccessibilityPanel() { const panel = document.getElementById('accessibilityPanel'); panel.classList.toggle('active'); }
+document.addEventListener('click', function(e) { const widget = document.getElementById('accessibilityWidget'); const panel = document.getElementById('accessibilityPanel'); if (widget && panel && !widget.contains(e.target) && panel.classList.contains('active')) { panel.classList.remove('active'); }});
+function toggleAccessibility(className, element, event) { if (event) event.stopPropagation(); document.body.classList.toggle(className); element.classList.toggle('active'); saveAccessibilitySettings(); }
+function changeFontSize(change) { currentFontSize += change; if (currentFontSize < 80) currentFontSize = 80; if (currentFontSize > 200) currentFontSize = 200; applyFontScale(currentFontSize); saveAccessibilitySettings(); }
+function applyFontScale(size) { const scale = size / 100; const counterScale = 1 / scale; const supportsZoom = 'zoom' in document.body.style; if (supportsZoom) { document.body.style.zoom = scale; document.body.style.transform = ''; document.body.style.width = ''; const w = document.querySelector('.accessibility-widget'); if (w) { w.style.zoom = counterScale; w.style.transform = ''; }} else { document.body.style.transform = 'scale(' + scale + ')'; document.body.style.transformOrigin = 'top right'; if (scale !== 1) { document.body.style.width = (100 / scale) + '%'; } else { document.body.style.width = ''; } const w = document.querySelector('.accessibility-widget'); if (w) { w.style.transform = 'scale(' + counterScale + ')'; w.style.transformOrigin = 'bottom left'; }} const d = document.getElementById('fontSizeDisplay'); if (d) d.textContent = size + '%'; }
+function resetAccessibility() { accFeatures.forEach(cls => document.body.classList.remove(cls)); currentFontSize = 100; document.body.style.zoom = ''; document.body.style.transform = ''; document.body.style.transformOrigin = ''; document.body.style.width = ''; const w = document.querySelector('.accessibility-widget'); if (w) { w.style.zoom = ''; w.style.transform = ''; w.style.transformOrigin = ''; } const d = document.getElementById('fontSizeDisplay'); if (d) d.textContent = '100%'; document.querySelectorAll('.acc-option').forEach(opt => opt.classList.remove('active')); localStorage.removeItem('accessibilitySettings'); }
+function saveAccessibilitySettings() { localStorage.setItem('accessibilitySettings', JSON.stringify({ classes: Array.from(document.body.classList).filter(c => accFeatures.includes(c)), fontSize: currentFontSize })); }
+function loadAccessibilitySettings() { const saved = localStorage.getItem('accessibilitySettings'); if (saved) { try { const s = JSON.parse(saved); if (s.classes) s.classes.forEach(cls => { if (accFeatures.includes(cls)) { document.body.classList.add(cls); const opt = document.querySelector('.acc-option[data-feature="'+cls+'"]'); if (opt) opt.classList.add('active'); }}); if (s.fontSize && s.fontSize !== 100) { currentFontSize = s.fontSize; applyFontScale(currentFontSize); }} catch(e){} }}
+document.addEventListener('DOMContentLoaded', loadAccessibilitySettings);
+</script>
+
+</body>
+</html>
