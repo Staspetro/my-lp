@@ -59,7 +59,7 @@ h3 { font-size: clamp(18px, 2.2vw, 24px); }
 p { font-size: 16px; color: var(--warm-gray); }
 
 /* ─── NAV ─── */
-nav {
+#nav {
   position:fixed; top:0; left:0; right:0; z-index:100;
   padding: 18px 48px;
   display:flex; align-items:center; justify-content:space-between;
@@ -69,7 +69,7 @@ nav {
   border-bottom: 1px solid transparent;
   transition: all var(--transition-smooth);
 }
-nav.scrolled {
+#nav.scrolled {
   border-color: var(--border);
   box-shadow: var(--shadow-sm);
   padding: 14px 48px;
@@ -1578,8 +1578,8 @@ body.acc-focus-highlight *:focus {
   .story-text .label { text-align: center; }
   .story-text { text-align: center; }
   .story-stats-row { grid-template-columns: repeat(2, 1fr); }
-  nav { padding: 16px 32px; }
-  nav.scrolled { padding: 12px 32px; }
+  #nav { padding: 16px 32px; }
+  #nav.scrolled { padding: 12px 32px; }
   .pain, .story, .how, .roi, .faq { padding: 80px 24px; }
   .hero { padding: 120px 24px 80px; }
   .final-cta { padding: 100px 24px; }
@@ -1587,8 +1587,8 @@ body.acc-focus-highlight *:focus {
 }
 
 @media (max-width: 720px) {
-  nav { padding: 16px 20px; }
-  nav.scrolled { padding: 12px 20px; }
+  #nav { padding: 16px 20px; }
+  #nav.scrolled { padding: 12px 20px; }
   .nav-cta { padding: 10px 20px; font-size: 14px; }
   .hero { padding: 100px 20px 60px; }
   .hero p { font-size: 15px; }
@@ -1969,7 +1969,7 @@ body.acc-focus-highlight *:focus {
       </ul>
     </div>
     <div class="footer-col">
-      <h3>משפטי</h3>
+      <h3>מידע נוסף</h3>
       <ul>
         <li><a href="terms.html">תקנון ותנאי שימוש</a></li>
         <li><a href="privacy.html">מדיניות פרטיות</a></li>
