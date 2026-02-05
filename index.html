@@ -2130,44 +2130,21 @@ document.getElementById('contact-form').addEventListener('submit', async functio
   submitBtn.textContent = 'שולח...';
 
   try {
-    // 1. Send to Formspree (Email)
-    const formspreeResponse = await fetch('https://formspree.io/f/xkozdayv', {
+    // Send to Google Sheets
+    const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbx2hUoVzokiqUKcCTZUNFfB5OoQhBpVMLQb83ejh22XGYmTdk_rVQKKXwAp0tY-_mOI/exec';
+    fetch(GOOGLE_SCRIPT_URL, {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'Accept': 'application/json'
-      },
+      mode: 'no-cors',
+      headers: { 'Content-Type': 'text/plain;charset=utf-8' },
       body: JSON.stringify({
+        timestamp: new Date().toLocaleString('he-IL'),
         name: name,
         phone: phone,
         profession: profession,
         clients: clients,
-        consent_marketing: consent,
-        _subject: `פנייה חדשה מ-${name} - ${profession}`
+        consent: consent
       })
     });
-
-    // 2. Send to Google Sheets via fetch text/plain
-    const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbx2hUoVzokiqUKcCTZUNFfB5OoQhBpVMLQb83ejh22XGYmTdk_rVQKKXwAp0tY-_mOI/exec';
-    if (GOOGLE_SCRIPT_URL) {
-      try {
-        fetch(GOOGLE_SCRIPT_URL, {
-          method: 'POST',
-          mode: 'no-cors',
-          headers: { 'Content-Type': 'text/plain;charset=utf-8' },
-          body: JSON.stringify({
-            timestamp: new Date().toLocaleString('he-IL'),
-            name: name,
-            phone: phone,
-            profession: profession,
-            clients: clients,
-            consent: consent
-          })
-        });
-      } catch (sheetError) {
-        console.error('Google Sheets error:', sheetError);
-      }
-    }
 
     // Show success message
     submitBtn.textContent = '✓ נשלח בהצלחה!';
