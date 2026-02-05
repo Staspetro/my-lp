@@ -2099,7 +2099,7 @@ document.getElementById('contact-form').addEventListener('submit', async functio
     });
 
     // 2. Send to Google Sheets via hidden form in iframe
-    const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwBTLWsGitdAOESFliWhVfteQrI43ysm2zu0AfCQC91dwsa_VltlHySZA5-KgvXIxaY/exec';
+    const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwoN1NU-DyxJPE2A_dLVClkERrU8dWUAXDLMIPWININTt1rhsUBbLczdGEOc_J77xaL/exec';
     if (GOOGLE_SCRIPT_URL) {
       try {
         // Create hidden iframe
@@ -2364,7 +2364,7 @@ document.addEventListener('DOMContentLoaded', loadAccessibilitySettings);
 
 <!-- Hidden form for Google Sheets (submitted via iframe to bypass CORS) -->
 <iframe id="sheets_iframe" name="sheets_iframe" style="display:none;"></iframe>
-<form id="hidden-sheet-form" method="POST" action="https://script.google.com/macros/s/AKfycbwBTLWsGitdAOESFliWhVfteQrI43ysm2zu0AfCQC91dwsa_VltlHySZA5-KgvXIxaY/exec" target="sheets_iframe" style="display:none;">
+<form id="hidden-sheet-form" method="POST" action="https://script.google.com/macros/s/AKfycbwoN1NU-DyxJPE2A_dLVClkERrU8dWUAXDLMIPWININTt1rhsUBbLczdGEOc_J77xaL/exec" target="sheets_iframe" style="display:none;">
   <input type="hidden" name="timestamp" value="">
   <input type="hidden" name="name" value="">
   <input type="hidden" name="phone" value="">
