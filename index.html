@@ -2026,23 +2026,73 @@ function changeFontSize(change) {
   currentFontSize += change;
   if (currentFontSize < 80) currentFontSize = 80;
   if (currentFontSize > 200) currentFontSize = 200;
-  document.documentElement.style.fontSize = currentFontSize + '%';
+  applyFontScale(currentFontSize);
+  saveAccessibilitySettings();
+}
+
+function applyFontScale(size) {
+  const scale = size / 100;
+  const counterScale = 1 / scale;
+
+  // Check if browser supports CSS zoom (all modern browsers do as of 2024+)
+  const supportsZoom = 'zoom' in document.body.style;
+
+  if (supportsZoom) {
+    // Use zoom for scaling (works with px values, doesn't break fixed positioning)
+    document.body.style.zoom = scale;
+    document.body.style.transform = '';
+    document.body.style.width = '';
+
+    // Counter the zoom on the accessibility widget so it stays the same size
+    const widget = document.querySelector('.accessibility-widget');
+    if (widget) {
+      widget.style.zoom = counterScale;
+      widget.style.transform = '';
+    }
+  } else {
+    // Fallback for very old browsers: use transform on content wrapper
+    // Note: This may affect fixed positioning, so we handle the widget separately
+    document.body.style.transform = 'scale(' + scale + ')';
+    document.body.style.transformOrigin = 'top right';
+    if (scale !== 1) {
+      document.body.style.width = (100 / scale) + '%';
+    } else {
+      document.body.style.width = '';
+    }
+
+    const widget = document.querySelector('.accessibility-widget');
+    if (widget) {
+      widget.style.transform = 'scale(' + counterScale + ')';
+      widget.style.transformOrigin = 'bottom left';
+    }
+  }
 
   // Update display
   const display = document.getElementById('fontSizeDisplay');
   if (display) {
-    display.textContent = currentFontSize + '%';
+    display.textContent = size + '%';
   }
-  saveAccessibilitySettings();
 }
 
 function resetAccessibility() {
   // Remove all accessibility classes
   accFeatures.forEach(cls => document.body.classList.remove(cls));
 
-  // Reset font size
+  // Reset font size / zoom
   currentFontSize = 100;
-  document.documentElement.style.fontSize = '100%';
+  document.body.style.zoom = '';
+  document.body.style.transform = '';
+  document.body.style.transformOrigin = '';
+  document.body.style.width = '';
+
+  // Reset widget counter-zoom/scale
+  const widget = document.querySelector('.accessibility-widget');
+  if (widget) {
+    widget.style.zoom = '';
+    widget.style.transform = '';
+    widget.style.transformOrigin = '';
+  }
+
   const display = document.getElementById('fontSizeDisplay');
   if (display) {
     display.textContent = '100%';
@@ -2083,14 +2133,10 @@ function loadAccessibilitySettings() {
         });
       }
 
-      // Apply saved font size
-      if (settings.fontSize) {
+      // Apply saved font size / zoom
+      if (settings.fontSize && settings.fontSize !== 100) {
         currentFontSize = settings.fontSize;
-        document.documentElement.style.fontSize = currentFontSize + '%';
-        const display = document.getElementById('fontSizeDisplay');
-        if (display) {
-          display.textContent = currentFontSize + '%';
-        }
+        applyFontScale(currentFontSize);
       }
     } catch (e) {
       console.error('Error loading accessibility settings:', e);
