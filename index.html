@@ -553,7 +553,7 @@ nav.scrolled {
 
 .step {
   display: grid;
-  grid-template-columns: 1fr 52px;
+  grid-template-columns: 52px 1fr;
   gap: 32px;
   margin-bottom: 32px;
   position: relative;
@@ -574,6 +574,8 @@ nav.scrolled {
   font-weight: 800;
   color: white;
   box-shadow: var(--shadow-md), 0 0 20px rgba(94,155,107,0.3);
+  grid-column: 1;
+  grid-row: 1;
 }
 
 .step-body {
@@ -583,10 +585,12 @@ nav.scrolled {
   padding: 32px;
   box-shadow: var(--shadow-sm);
   transition: all var(--transition-fast);
+  grid-column: 2;
+  grid-row: 1;
 }
 .step-body:hover {
   box-shadow: var(--shadow-md);
-  transform: translateX(4px);
+  transform: translateX(-4px);
 }
 
 .step-tag {
@@ -1358,28 +1362,63 @@ body.acc-focus-highlight *:focus {
   .story-text .label { text-align: center; }
   .story-text { text-align: center; }
   .story-stats-row { grid-template-columns: repeat(2, 1fr); }
+  nav { padding: 16px 32px; }
+  nav.scrolled { padding: 12px 32px; }
+  .pain, .story, .how, .roi, .faq { padding: 80px 24px; }
+  .hero { padding: 120px 24px 80px; }
+  .final-cta { padding: 100px 24px; }
+  .form-section { padding: 80px 24px; }
 }
 
 @media (max-width: 720px) {
-  nav { padding: 16px 24px; }
-  .hero { padding: 120px 20px 80px; }
+  nav { padding: 16px 20px; }
+  nav.scrolled { padding: 12px 20px; }
+  .nav-cta { padding: 10px 20px; font-size: 14px; }
+  .hero { padding: 100px 20px 60px; }
+  .hero p { font-size: 15px; }
+  .hero-sub { font-size: 17px; }
+  .pain, .story, .how, .roi, .faq { padding: 60px 20px; }
+  .final-cta { padding: 80px 20px; }
+  .form-section { padding: 60px 20px; }
   .pain-grid { grid-template-columns: 1fr; }
+  .pain-card { padding: 28px 24px; }
   .steps::before { right: 23px; }
-  .step { grid-template-columns: 1fr 48px; gap: 20px; }
+  .step { grid-template-columns: 48px 1fr; gap: 16px; }
   .step-dot { width: 48px; height: 48px; font-size: 16px; }
+  .step-body { padding: 24px; }
   .roi-card { padding: 32px 24px; }
-  .form-card { padding: 40px 28px; }
+  .form-card { padding: 36px 24px; }
   .trust-bar { flex-direction: column; gap: 12px; }
   .trust-item { width: 100%; max-width: 320px; justify-content: center; }
   .faq-q { font-size: 15px; padding: 20px 24px; }
   .story-photo img { height: 360px; }
+  .story-stats-row { grid-template-columns: 1fr; }
+  .cta-row { flex-direction: column; gap: 14px; }
+  .btn-main, .btn-ghost { width: 100%; text-align: center; justify-content: center; }
 }
 
 @media (max-width: 480px) {
-  .story-stats-row { grid-template-columns: 1fr; }
-  h1 { font-size: 32px; }
-  .btn-main { padding: 16px 32px; font-size: 15px; }
+  h1 { font-size: 28px; }
+  h2 { font-size: 22px; }
+  .hero { padding: 90px 16px 50px; }
+  .pain, .story, .how, .roi, .faq { padding: 48px 16px; }
+  .final-cta { padding: 60px 16px; }
+  .form-section { padding: 48px 16px; }
+  .btn-main { padding: 16px 28px; font-size: 15px; }
   .btn-ghost { padding: 14px 24px; font-size: 14px; }
+  .steps::before { right: 19px; }
+  .step { grid-template-columns: 40px 1fr; gap: 12px; }
+  .step-dot { width: 40px; height: 40px; font-size: 14px; }
+  .step-body { padding: 20px 16px; }
+  .step-body h3 { font-size: 17px; }
+  .step-body p { font-size: 14px; }
+  .pain-card { padding: 24px 20px; }
+  .form-card { padding: 28px 20px; }
+  .roi-card { padding: 28px 20px; }
+  .badge { padding: 8px 16px; font-size: 13px; }
+  .trust-item { max-width: 100%; font-size: 13px; padding: 10px 16px; }
+  footer { padding: 32px 16px 24px; }
+  .footer-links { gap: 16px; }
 }
 </style>
 </head>
