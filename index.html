@@ -2243,29 +2243,14 @@ document.getElementById('contact-form').addEventListener('submit', async functio
       })
     });
 
-    // Show success message
+    // Show success briefly then redirect to thank you page
     submitBtn.textContent = '✓ נשלח בהצלחה!';
     submitBtn.style.background = 'linear-gradient(135deg, var(--sage), var(--sage-deep))';
 
-    // Reset form
-    form.reset();
-
-    // Show beautiful popup with WhatsApp option
+    // Redirect to thank you page after short delay
     setTimeout(() => {
-      const whatsappMsg = encodeURIComponent(`היי סטאס! אני ${name}, ${profession}. השארתי פרטים באתר ואשמח לדבר.`);
-      const whatsappUrl = `https://wa.me/972547716292?text=${whatsappMsg}`;
-
-      const whatsappBtn = document.getElementById('successWhatsappBtn');
-      if (whatsappBtn) whatsappBtn.href = whatsappUrl;
-
-      const overlay = document.getElementById('successOverlay');
-      if (overlay) overlay.classList.add('active');
-
-      // Reset button
-      submitBtn.textContent = originalText;
-      submitBtn.style.background = '';
-      submitBtn.disabled = false;
-    }, 1500);
+      window.location.href = 'thank-you.html';
+    }, 800);
 
   } catch (error) {
     console.error('Error:', error);
