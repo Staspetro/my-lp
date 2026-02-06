@@ -212,8 +212,16 @@ a { text-decoration: none; color: inherit; }
   color: var(--charcoal);
   margin-bottom: 16px;
 }
-.calendly-inline-widget {
-  border-radius: var(--radius-md);
+.calendly-container {
+  max-width: 900px;
+  width: 100%;
+  margin-top: 40px;
+  text-align: center;
+}
+.calendly-title {
+  font-size: 16px;
+  color: var(--warm-gray);
+  margin-bottom: 20px;
 }
 
 /* ─── FAT FOOTER ─── */
@@ -589,12 +597,13 @@ body.acc-stop-animations *, body.acc-stop-animations *::before, body.acc-stop-an
       </a>
     </div>
 
-    <!-- Calendly Section -->
-    <div class="divider">או קבעי שיחה ישירות</div>
-    <div class="calendly-section">
-      <div class="calendly-inline-widget" data-url="https://calendly.com/bexux/meet-with-me" style="min-width:320px;height:950px;"></div>
-      <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
-    </div>
+  </div>
+
+  <!-- Calendly Section - Outside card for full width -->
+  <div class="calendly-container">
+    <p class="calendly-title">או קבעו שיחה ישירות</p>
+    <div class="calendly-inline-widget" data-url="https://calendly.com/bexux/meet-with-me" style="min-width:320px;height:700px;"></div>
+    <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
   </div>
 </main>
 
