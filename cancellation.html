@@ -540,7 +540,23 @@ body.acc-focus-highlight *:focus { outline: 3px solid #FF5722 !important; outlin
   .accessibility-panel { width: calc(100vw - 20px); left: 0; max-width: 320px; }
   .acc-toggle-label { display: none; }
 }
-
+/* ─── COOKIE CONSENT BANNER ─── */
+.cookie-banner { position: fixed; bottom: 0; left: 0; right: 0; background: #fff; box-shadow: 0 -4px 20px rgba(0,0,0,0.1); z-index: 999998; padding: 20px 24px; display: none; border-top: 3px solid #5E9B6B; }
+.cookie-banner.show { display: block; animation: cookieSlideUp 0.4s ease; }
+@keyframes cookieSlideUp { from { transform: translateY(100%); } to { transform: translateY(0); } }
+.cookie-content { max-width: 1100px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap; }
+.cookie-text { flex: 1; min-width: 280px; }
+.cookie-text h4 { font-size: 15px; font-weight: 700; color: #2C3E2F; margin-bottom: 6px; display: flex; align-items: center; gap: 8px; }
+.cookie-text h4 svg { width: 20px; height: 20px; fill: #5E9B6B; }
+.cookie-text p { font-size: 13px; color: #6B7B6E; line-height: 1.5; }
+.cookie-text a { color: #4A7C54; text-decoration: underline; }
+.cookie-buttons { display: flex; gap: 12px; flex-shrink: 0; }
+.cookie-btn { padding: 12px 24px; border-radius: 50px; font-size: 14px; font-weight: 600; cursor: pointer; transition: all 0.3s ease; border: none; }
+.cookie-btn-accept { background: linear-gradient(135deg, #5E9B6B, #4A7C54); color: white; }
+.cookie-btn-accept:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(94,155,107,0.4); }
+.cookie-btn-decline { background: #FDFBF7; color: #2C3E2F; border: 1px solid rgba(94,155,107,0.12); }
+.cookie-btn-decline:hover { background: #E8F0E5; }
+@media (max-width: 600px) { .cookie-banner { padding: 16px; } .cookie-content { flex-direction: column; text-align: center; } .cookie-buttons { width: 100%; justify-content: center; } .cookie-text h4 { justify-content: center; } }
 </style>
 </head>
 <body>
@@ -692,7 +708,14 @@ function resetAccessibility() { accFeatures.forEach(cls => document.body.classLi
 function saveAccessibilitySettings() { localStorage.setItem('accessibilitySettings', JSON.stringify({ classes: Array.from(document.body.classList).filter(c => accFeatures.includes(c)), fontSize: currentFontSize })); }
 function loadAccessibilitySettings() { const saved = localStorage.getItem('accessibilitySettings'); if (saved) { try { const s = JSON.parse(saved); if (s.classes) s.classes.forEach(cls => { if (accFeatures.includes(cls)) { document.body.classList.add(cls); const opt = document.querySelector('.acc-option[data-feature="'+cls+'"]'); if (opt) opt.classList.add('active'); }}); if (s.fontSize && s.fontSize !== 100) { currentFontSize = s.fontSize; applyFontScale(currentFontSize); }} catch(e){} }}
 document.addEventListener('DOMContentLoaded', loadAccessibilitySettings);
+// Cookie Consent
+function checkCookieConsent() { if (!localStorage.getItem('cookieConsent')) { setTimeout(() => { document.getElementById('cookieBanner').classList.add('show'); }, 1000); }}
+function acceptCookies() { localStorage.setItem('cookieConsent', 'accepted'); document.getElementById('cookieBanner').classList.remove('show'); }
+function declineCookies() { localStorage.setItem('cookieConsent', 'declined'); document.getElementById('cookieBanner').classList.remove('show'); }
+document.addEventListener('DOMContentLoaded', checkCookieConsent);
 </script>
+
+<div class="cookie-banner" id="cookieBanner"><div class="cookie-content"><div class="cookie-text"><h4><svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>אתר זה משתמש בעוגיות</h4><p>אנו משתמשים בעוגיות כדי לשפר את חווית הגלישה ולנתח תנועה באתר. בהמשך הגלישה את/ה מסכימ/ה לשימוש בעוגיות. <a href="privacy.html">מדיניות פרטיות</a></p></div><div class="cookie-buttons"><button class="cookie-btn cookie-btn-accept" onclick="acceptCookies()">מאשר/ת</button><button class="cookie-btn cookie-btn-decline" onclick="declineCookies()">דחייה</button></div></div></div>
 
 </body>
 </html>
