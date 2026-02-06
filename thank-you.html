@@ -213,63 +213,333 @@ a { text-decoration: none; color: inherit; }
   margin-bottom: 16px;
 }
 .calendly-inline-widget {
-  min-height: 650px;
+  min-height: 700px;
+  height: auto;
   border-radius: var(--radius-md);
-  overflow: hidden;
+  overflow: visible;
 }
 
-/* Testimonial */
-.testimonial {
-  margin-top: 36px;
-  padding-top: 28px;
-  border-top: 1px solid var(--border);
-}
-.testimonial p {
-  font-size: 15px;
-  font-style: italic;
-  color: var(--warm-gray);
-  margin-bottom: 12px;
-  line-height: 1.8;
-}
-.testimonial .author {
+/* ─── FAT FOOTER ─── */
+footer {
+  background: #1a1f25;
+  color: rgba(255,255,255,0.6);
   font-size: 14px;
+  border-top: 1px solid rgba(255,255,255,0.08);
+}
+.footer-main {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 64px 32px 48px;
+  display: grid;
+  grid-template-columns: 1.4fr 1fr 1fr 1fr;
+  gap: 48px;
+}
+.footer-col h3 {
+  color: rgba(255,255,255,0.9);
+  font-size: 15px;
   font-weight: 600;
+  margin-bottom: 18px;
+}
+.footer-col p {
+  line-height: 1.7;
+  font-size: 13.5px;
+  color: rgba(255,255,255,0.5);
+}
+.footer-col nav ul,
+.footer-col ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.footer-col ul li a {
+  color: rgba(255,255,255,0.6);
+  text-decoration: none;
+  font-size: 13.5px;
+  transition: color 0.3s;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+.footer-col ul li a:hover {
+  color: var(--sage-light);
+}
+.footer-col ul li a svg {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+  opacity: 0.7;
+}
+.footer-bottom {
+  border-top: 1px solid rgba(255,255,255,0.08);
+  padding: 24px 32px;
+  text-align: center;
+  color: rgba(255,255,255,0.35);
+  font-size: 13px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+.footer-bottom a {
+  color: rgba(255,255,255,0.45);
+  text-decoration: none;
+}
+.footer-bottom a:hover {
+  color: rgba(255,255,255,0.7);
+}
+
+/* ─── ACCESSIBILITY WIDGET ─── */
+.accessibility-widget {
+  position: fixed;
+  left: 20px;
+  bottom: 40px;
+  z-index: 999999;
+  font-family: 'Open Sans', Arial, sans-serif;
+}
+.accessibility-toggle {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--sage), var(--sage-deep));
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 20px rgba(94,155,107,0.4);
+  transition: all 0.3s ease;
+}
+.accessibility-toggle:hover {
+  transform: scale(1.08);
+  box-shadow: 0 6px 25px rgba(94,155,107,0.5);
+}
+.accessibility-toggle svg {
+  width: 28px;
+  height: 28px;
+  fill: white;
+}
+.accessibility-panel {
+  position: absolute;
+  bottom: 75px;
+  left: 0;
+  width: 320px;
+  background: var(--white);
+  border-radius: 16px;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.15);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(10px) scale(0.95);
+  transition: all 0.3s ease;
+  max-height: 80vh;
+  overflow-y: auto;
+}
+.accessibility-widget.open .accessibility-panel {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0) scale(1);
+}
+.acc-header {
+  padding: 20px;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.acc-header h3 {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--charcoal);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.acc-header h3 svg {
+  width: 20px;
+  height: 20px;
+  fill: var(--sage);
+}
+.acc-close {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: none;
+  background: var(--cream);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s;
+}
+.acc-close:hover { background: var(--sage-pale); }
+.acc-close svg {
+  width: 16px;
+  height: 16px;
+  stroke: var(--charcoal);
+}
+.acc-body { padding: 16px 20px; }
+.acc-section { margin-bottom: 20px; }
+.acc-section:last-child { margin-bottom: 0; }
+.acc-section-title {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--light-gray);
+  margin-bottom: 12px;
+}
+.acc-option {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 14px;
+  background: var(--cream);
+  border-radius: 10px;
+  margin-bottom: 8px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.acc-option:hover { background: var(--sage-pale); }
+.acc-option.active {
+  background: var(--sage-pale);
+  border: 2px solid var(--sage);
+}
+.acc-option-label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+  font-weight: 500;
   color: var(--charcoal);
 }
-.testimonial .author span {
-  font-weight: 400;
-  color: var(--light-gray);
+.acc-option-label svg {
+  width: 18px;
+  height: 18px;
+  fill: var(--sage);
 }
-
-/* Footer */
-.mini-footer {
+.acc-toggle-switch {
+  width: 44px;
+  height: 24px;
+  background: var(--light-gray);
+  border-radius: 12px;
+  position: relative;
+  transition: background 0.2s;
+}
+.acc-toggle-switch::after {
+  content: '';
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 20px;
+  height: 20px;
+  background: white;
+  border-radius: 50%;
+  transition: transform 0.2s;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+.acc-option.active .acc-toggle-switch {
+  background: var(--sage);
+}
+.acc-option.active .acc-toggle-switch::after {
+  transform: translateX(20px);
+}
+.acc-font-controls {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.acc-font-btn {
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  border: 2px solid var(--border);
+  background: var(--white);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  color: var(--charcoal);
+  transition: all 0.2s;
+}
+.acc-font-btn:hover {
+  border-color: var(--sage);
+  background: var(--sage-pale);
+}
+.acc-font-size {
+  min-width: 45px;
   text-align: center;
-  padding: 24px;
-  color: var(--light-gray);
+  font-weight: 600;
+  font-size: 14px;
+  color: var(--charcoal);
+}
+.acc-footer {
+  padding: 16px 20px;
+  border-top: 1px solid var(--border);
+  text-align: center;
+}
+.acc-reset {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 20px;
+  background: var(--cream);
+  border: none;
+  border-radius: 8px;
   font-size: 13px;
+  font-weight: 600;
+  color: var(--warm-gray);
+  cursor: pointer;
+  transition: all 0.2s;
 }
-.mini-footer a {
+.acc-reset:hover {
+  background: var(--sage-pale);
+  color: var(--sage-deep);
+}
+.acc-reset svg {
+  width: 14px;
+  height: 14px;
+  fill: currentColor;
+}
+.acc-info {
+  margin-top: 12px;
+  font-size: 11px;
+  color: var(--light-gray);
+  line-height: 1.6;
+}
+.acc-info a {
   color: var(--sage);
+  text-decoration: underline;
 }
+body.acc-big-cursor, body.acc-big-cursor * { cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 24 24'%3E%3Cpath fill='%23000' d='M7 2l12 11.5-5.5 1 3.5 7-2.5 1-3.5-7-4 3.5z'/%3E%3C/svg%3E") 4 4, auto !important; }
+body.acc-highlight-links a { outline: 3px solid #FFD700 !important; outline-offset: 2px; background: rgba(255,215,0,0.2) !important; }
+body.acc-high-contrast { filter: contrast(1.4) !important; }
+body.acc-grayscale { filter: grayscale(1) !important; }
+body.acc-high-contrast.acc-grayscale { filter: contrast(1.4) grayscale(1) !important; }
+body.acc-focus-highlight *:focus { outline: 3px solid var(--sage) !important; outline-offset: 2px; box-shadow: 0 0 0 6px rgba(94,155,107,0.3) !important; }
+body.acc-stop-animations *, body.acc-stop-animations *::before, body.acc-stop-animations *::after { animation: none !important; transition: none !important; }
 
 /* Responsive */
+@media (max-width: 900px) {
+  .footer-main { grid-template-columns: 1fr 1fr; gap: 40px 32px; }
+}
+@media (max-width: 720px) {
+  .footer-main { grid-template-columns: 1fr; gap: 36px; padding: 48px 24px 40px; text-align: center; }
+  .footer-col ul { align-items: center; }
+  .footer-bottom { padding: 20px 24px; }
+}
 @media (max-width: 600px) {
-  .thank-you-card {
-    padding: 40px 24px;
-  }
-  .thank-you-card h1 {
-    font-size: 24px;
-  }
-  .thank-you-card .subtitle {
-    font-size: 16px;
-  }
-  .next-steps {
-    padding: 20px;
-  }
-  .btn-primary {
-    padding: 16px 24px;
-    font-size: 16px;
-  }
+  .thank-you-page { padding: 24px 16px; }
+  .thank-you-card { padding: 40px 24px; }
+  .thank-you-card h1 { font-size: 24px; }
+  .thank-you-card .subtitle { font-size: 16px; }
+  .next-steps { padding: 20px; }
+  .btn-primary { padding: 16px 24px; font-size: 16px; }
+  .calendly-inline-widget { min-height: 650px; }
+  .accessibility-widget { left: 16px; bottom: 30px; }
+  .accessibility-toggle { width: 52px; height: 52px; }
+  .accessibility-toggle svg { width: 24px; height: 24px; }
+  .accessibility-panel { width: 290px; }
 }
 </style>
 </head>
@@ -329,18 +599,212 @@ a { text-decoration: none; color: inherit; }
       <div class="calendly-inline-widget" data-url="https://calendly.com/bexux/meet-with-me?hide_gdpr_banner=1&primary_color=5e9b6b"></div>
       <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
     </div>
-
-    <!-- Testimonial -->
-    <div class="testimonial">
-      <p>"סטאס הביא לי 12 לידים בשבוע הראשון. סוף סוף מישהו שמבין מטפלות."</p>
-      <div class="author">מיכל כ. <span>• מאמנת אישית, תל אביב</span></div>
-    </div>
   </div>
 </main>
 
-<footer class="mini-footer">
-  <a href="index.html">סטאס פטרובץ</a> • שיווק ממומן למטפלות ומאמנות
+<footer>
+  <div class="footer-main">
+    <div class="footer-col">
+      <h3>סטאס פטרובץ</h3>
+      <p>ליווי אסטרטגי ושיווק ממומן למטפלות ומאמנות שרוצות למלא את הקליניקה.</p>
+    </div>
+    <div class="footer-col">
+      <h3>ניווט מהיר</h3>
+      <nav aria-label="ניווט פוטר">
+        <ul>
+          <li><a href="index.html">דף הבית</a></li>
+          <li><a href="index.html#how">תהליך העבודה</a></li>
+          <li><a href="index.html#faq">שאלות ותשובות</a></li>
+          <li><a href="https://wa.me/972547716292?text=%D7%94%D7%99%D7%99%2C%20%D7%90%D7%A0%D7%99%20%D7%A8%D7%95%D7%A6%D7%94%20%D7%9C%D7%93%D7%A2%D7%AA%20%D7%A2%D7%9C%20%D7%AA%D7%9B%D7%A0%D7%99%D7%AA%20%D7%94%D7%94%D7%9B%D7%A9%D7%A8%D7%94%20%D7%A9%D7%9C%D7%9B%D7%9D%20%D7%A9%D7%9C%20%D7%90%D7%99%D7%9A%20%D7%9C%D7%91%D7%A0%D7%95%D7%AA%20%D7%95%D7%95%D7%91%D7%99%D7%A0%D7%A8" target="_blank" rel="noopener">בניית וובינר</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="footer-col">
+      <h3>דברו איתי</h3>
+      <ul>
+        <li><a href="https://wa.me/972547716292" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>וואטסאפ</a></li>
+        <li><a href="tel:054-7716292"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>054-7716292</a></li>
+        <li><a href="mailto:stas@bex.org.il"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>stas@bex.org.il</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h3>מידע נוסף</h3>
+      <ul>
+        <li><a href="terms.html">תקנון ותנאי שימוש</a></li>
+        <li><a href="privacy.html">מדיניות פרטיות</a></li>
+        <li><a href="accessibility.html">הצהרת נגישות</a></li>
+        <li><a href="cancellation.html">ביטול עסקה</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    © 2026 כל הזכויות שמורות לבטר אקספיריאנס בע״מ
+  </div>
 </footer>
+
+<!-- ─── ACCESSIBILITY WIDGET ─── -->
+<div class="accessibility-widget" id="accessibilityWidget">
+  <button class="accessibility-toggle" aria-label="פתח תפריט נגישות" aria-expanded="false" aria-controls="accessibilityPanel" onclick="toggleAccessibilityPanel()">
+    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <path d="M12 2C13.1 2 14 2.9 14 4C14 5.1 13.1 6 12 6C10.9 6 10 5.1 10 4C10 2.9 10.9 2 12 2ZM21 9H15V22H13V16H11V22H9V9H3V7H21V9Z"/>
+    </svg>
+  </button>
+  <div class="accessibility-panel" id="accessibilityPanel" role="dialog" aria-label="אפשרויות נגישות">
+    <div class="acc-header">
+      <h3>
+        <svg viewBox="0 0 24 24"><path d="M12 2C13.1 2 14 2.9 14 4C14 5.1 13.1 6 12 6C10.9 6 10 5.1 10 4C10 2.9 10.9 2 12 2ZM21 9H15V22H13V16H11V22H9V9H3V7H21V9Z"/></svg>
+        נגישות
+      </h3>
+      <button class="acc-close" onclick="toggleAccessibilityPanel()" aria-label="סגור">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
+      </button>
+    </div>
+    <div class="acc-body">
+      <div class="acc-section">
+        <div class="acc-section-title">גודל טקסט</div>
+        <div class="acc-option" style="justify-content: center;">
+          <div class="acc-font-controls">
+            <button class="acc-font-btn" onclick="changeFontSize(-1)" aria-label="הקטן טקסט">א-</button>
+            <span class="acc-font-size" id="fontSizeDisplay">100%</span>
+            <button class="acc-font-btn" onclick="changeFontSize(1)" aria-label="הגדל טקסט">א+</button>
+          </div>
+        </div>
+      </div>
+      <div class="acc-section">
+        <div class="acc-section-title">תצוגה</div>
+        <div class="acc-option" data-feature="acc-high-contrast" onclick="toggleAccessibility('acc-high-contrast', this, event)" role="button" tabindex="0">
+          <span class="acc-option-label">
+            <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18V4c4.41 0 8 3.59 8 8s-3.59 8-8 8z"/></svg>
+            ניגודיות גבוהה
+          </span>
+          <div class="acc-toggle-switch"></div>
+        </div>
+        <div class="acc-option" data-feature="acc-grayscale" onclick="toggleAccessibility('acc-grayscale', this, event)" role="button" tabindex="0">
+          <span class="acc-option-label">
+            <svg viewBox="0 0 24 24"><path d="M17.66 7.93L12 2.27 6.34 7.93c-3.12 3.12-3.12 8.19 0 11.31A7.98 7.98 0 0012 21.58c2.05 0 4.1-.78 5.66-2.34 3.12-3.12 3.12-8.19 0-11.31zM12 19.59c-1.6 0-3.11-.62-4.24-1.76C6.62 16.69 6 15.19 6 13.59s.62-3.11 1.76-4.24L12 5.1v14.49z"/></svg>
+            גווני אפור
+          </span>
+          <div class="acc-toggle-switch"></div>
+        </div>
+      </div>
+      <div class="acc-section">
+        <div class="acc-section-title">ניווט</div>
+        <div class="acc-option" data-feature="acc-highlight-links" onclick="toggleAccessibility('acc-highlight-links', this, event)" role="button" tabindex="0">
+          <span class="acc-option-label">
+            <svg viewBox="0 0 24 24"><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z"/></svg>
+            הדגש קישורים
+          </span>
+          <div class="acc-toggle-switch"></div>
+        </div>
+        <div class="acc-option" data-feature="acc-big-cursor" onclick="toggleAccessibility('acc-big-cursor', this, event)" role="button" tabindex="0">
+          <span class="acc-option-label">
+            <svg viewBox="0 0 24 24"><path d="M13.64 21.97C13.14 22.21 12.54 22 12.31 21.5L10.13 16.76L7.62 18.78C7.45 18.92 7.24 19 7.02 19C6.55 19 6.16 18.61 6.16 18.14V5.51C6.16 5.04 6.55 4.65 7.02 4.65C7.23 4.65 7.43 4.73 7.59 4.86L18.15 14.03C18.5 14.33 18.54 14.87 18.23 15.22C18.09 15.38 17.89 15.49 17.67 15.51L14.1 15.89L16.27 20.62C16.5 21.13 16.28 21.73 15.77 21.96L13.64 21.97Z"/></svg>
+            סמן גדול
+          </span>
+          <div class="acc-toggle-switch"></div>
+        </div>
+        <div class="acc-option" data-feature="acc-focus-highlight" onclick="toggleAccessibility('acc-focus-highlight', this, event)" role="button" tabindex="0">
+          <span class="acc-option-label">
+            <svg viewBox="0 0 24 24"><path d="M12 8c-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4-1.79-4-4-4zm8.94 3A8.994 8.994 0 0013 3.06V1h-2v2.06A8.994 8.994 0 003.06 11H1v2h2.06A8.994 8.994 0 0011 20.94V23h2v-2.06A8.994 8.994 0 0020.94 13H23v-2h-2.06zM12 19c-3.87 0-7-3.13-7-7s3.13-7 7-7 7 3.13 7 7-3.13 7-7 7z"/></svg>
+            הדגש פוקוס
+          </span>
+          <div class="acc-toggle-switch"></div>
+        </div>
+      </div>
+      <div class="acc-section">
+        <div class="acc-section-title">אחר</div>
+        <div class="acc-option" data-feature="acc-stop-animations" onclick="toggleAccessibility('acc-stop-animations', this, event)" role="button" tabindex="0">
+          <span class="acc-option-label">
+            <svg viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+            עצור אנימציות
+          </span>
+          <div class="acc-toggle-switch"></div>
+        </div>
+      </div>
+    </div>
+    <div class="acc-footer">
+      <button class="acc-reset" onclick="resetAccessibility()">
+        <svg viewBox="0 0 24 24"><path d="M12.5 8c-2.65 0-5.05.99-6.9 2.6L2 7v9h9l-3.62-3.62c1.39-1.16 3.16-1.88 5.12-1.88 3.54 0 6.55 2.31 7.6 5.5l2.37-.78C21.08 11.03 17.15 8 12.5 8z"/></svg>
+        איפוס כל ההגדרות
+      </button>
+      <p class="acc-info">
+        תקן IS 5568 | WCAG 2.0 AA<br>
+        <a href="accessibility.html">הצהרת נגישות מלאה</a>
+      </p>
+    </div>
+  </div>
+</div>
+
+<script>
+// Accessibility Widget Functions
+function toggleAccessibilityPanel() {
+  const widget = document.getElementById('accessibilityWidget');
+  const isOpen = widget.classList.toggle('open');
+  const toggle = widget.querySelector('.accessibility-toggle');
+  toggle.setAttribute('aria-expanded', isOpen);
+}
+
+function toggleAccessibility(feature, element, event) {
+  if (event) event.stopPropagation();
+  document.body.classList.toggle(feature);
+  element.classList.toggle('active');
+  localStorage.setItem(feature, document.body.classList.contains(feature));
+}
+
+let currentFontSize = 100;
+function changeFontSize(delta) {
+  currentFontSize = Math.min(150, Math.max(80, currentFontSize + delta * 10));
+  document.getElementById('fontSizeDisplay').textContent = currentFontSize + '%';
+  const scale = currentFontSize / 100;
+  if (CSS.supports('zoom', '1')) {
+    document.body.style.zoom = scale;
+    const widget = document.getElementById('accessibilityWidget');
+    if (widget) widget.style.zoom = 1 / scale;
+  } else {
+    document.body.style.transform = `scale(${scale})`;
+    document.body.style.transformOrigin = 'top right';
+  }
+  localStorage.setItem('acc-font-size', currentFontSize);
+}
+
+function resetAccessibility() {
+  ['acc-high-contrast','acc-grayscale','acc-highlight-links','acc-big-cursor','acc-focus-highlight','acc-stop-animations'].forEach(feature => {
+    document.body.classList.remove(feature);
+    localStorage.removeItem(feature);
+    const el = document.querySelector(`[data-feature="${feature}"]`);
+    if (el) el.classList.remove('active');
+  });
+  currentFontSize = 100;
+  document.getElementById('fontSizeDisplay').textContent = '100%';
+  document.body.style.zoom = '';
+  document.body.style.transform = '';
+  localStorage.removeItem('acc-font-size');
+  const widget = document.getElementById('accessibilityWidget');
+  if (widget) widget.style.zoom = '';
+}
+
+// Load saved preferences
+document.addEventListener('DOMContentLoaded', function() {
+  ['acc-high-contrast','acc-grayscale','acc-highlight-links','acc-big-cursor','acc-focus-highlight','acc-stop-animations'].forEach(feature => {
+    if (localStorage.getItem(feature) === 'true') {
+      document.body.classList.add(feature);
+      const el = document.querySelector(`[data-feature="${feature}"]`);
+      if (el) el.classList.add('active');
+    }
+  });
+  const savedSize = localStorage.getItem('acc-font-size');
+  if (savedSize) {
+    currentFontSize = parseInt(savedSize);
+    document.getElementById('fontSizeDisplay').textContent = currentFontSize + '%';
+    const scale = currentFontSize / 100;
+    if (CSS.supports('zoom', '1')) {
+      document.body.style.zoom = scale;
+      const widget = document.getElementById('accessibilityWidget');
+      if (widget) widget.style.zoom = 1 / scale;
+    }
+  }
+});
+</script>
 
 </body>
 </html>
