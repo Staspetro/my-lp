@@ -213,10 +213,7 @@ a { text-decoration: none; color: inherit; }
   margin-bottom: 16px;
 }
 .calendly-inline-widget {
-  min-height: 700px;
-  height: auto;
   border-radius: var(--radius-md);
-  overflow: visible;
 }
 
 /* ─── FAT FOOTER ─── */
@@ -535,7 +532,6 @@ body.acc-stop-animations *, body.acc-stop-animations *::before, body.acc-stop-an
   .thank-you-card .subtitle { font-size: 16px; }
   .next-steps { padding: 20px; }
   .btn-primary { padding: 16px 24px; font-size: 16px; }
-  .calendly-inline-widget { min-height: 650px; }
   .accessibility-widget { left: 16px; bottom: 30px; }
   .accessibility-toggle { width: 52px; height: 52px; }
   .accessibility-toggle svg { width: 24px; height: 24px; }
@@ -596,7 +592,7 @@ body.acc-stop-animations *, body.acc-stop-animations *::before, body.acc-stop-an
     <!-- Calendly Section -->
     <div class="divider">או קבעי שיחה ישירות</div>
     <div class="calendly-section">
-      <div class="calendly-inline-widget" data-url="https://calendly.com/bexux/meet-with-me?hide_gdpr_banner=1&primary_color=5e9b6b"></div>
+      <div class="calendly-inline-widget" data-url="https://calendly.com/bexux/meet-with-me" style="min-width:320px;height:700px;"></div>
       <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
     </div>
   </div>
