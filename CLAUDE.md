@@ -12,6 +12,14 @@ The website is entirely in **Hebrew (RTL)** with no build system, no package man
 
 ```
 my-lp/
+├── images/                     # All image assets
+│   ├── hero-bg-stas-rotem.jpg  # Hero section background image
+│   ├── early-days-studio.jpg   # Narrative/story section image
+│   ├── canada-family-victory.jpg # Success story image
+│   ├── late-night-struggle.jpg # Story/narrative image
+│   ├── stas.jpg                # Portrait photo (JPG)
+│   ├── stas.webp               # Portrait photo (WebP, optimized)
+│   └── stas-rotem-portrait.jpg # Additional portrait photo
 ├── index.html                  # Main landing page (paid marketing services)
 ├── ppc-for-therapist.html      # Specialized PPC landing page for therapists
 ├── thank-you.html              # Post-form-submission conversion page
@@ -22,14 +30,8 @@ my-lp/
 ├── robots.txt                  # SEO crawler directives
 ├── sitemap.xml                 # XML sitemap for expe.co.il
 ├── favicon.ico                 # Browser favicon
-├── lead-magnet-draft.md        # Hebrew lead magnet content draft (not published)
-├── hero-bg-stas-rotem.jpg      # Hero section background image
-├── early-days-studio.jpg       # Narrative/story section image
-├── canada-family-victory.jpg   # Success story image
-├── late-night-struggle.jpg     # Story/narrative image
-├── stas.jpg                    # Portrait photo (JPG)
-├── stas.webp                   # Portrait photo (WebP, optimized)
-└── stas-rotem-portrait.jpg     # Additional portrait photo
+├── .gitignore                  # Git ignore rules
+└── lead-magnet-draft.md        # Hebrew lead magnet content draft (not published)
 ```
 
 ---
@@ -118,11 +120,12 @@ Contains 5 URLs with `lastmod` dates and change frequencies. When adding a new p
 
 ## Image Assets
 
-Images are stored at the root level alongside HTML files. All images are referenced with relative paths (e.g., `src="stas.jpg"`).
+Images are stored in the `images/` directory. All images are referenced with relative paths (e.g., `src="images/stas.jpg"`).
 
 - Prefer **WebP** format for new images where browser support allows; a `.jpg` fallback is included for `stas` (both `stas.jpg` and `stas.webp` exist).
 - Large images (`hero-bg-stas-rotem.jpg` at 1.3 MB) are used as CSS background images; optimize before adding new large assets.
 - No image CDN or optimization pipeline is in place — images are served directly from the repository.
+- When adding new images, place them in the `images/` directory.
 
 ---
 
