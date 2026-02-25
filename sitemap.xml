@@ -8,26 +8,32 @@
   </url>
   <url>
     <loc>https://expe.co.il/terms.html</loc>
-    <lastmod>2026-02-05</lastmod>
+    <lastmod>2026-02-25</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
     <loc>https://expe.co.il/privacy.html</loc>
-    <lastmod>2026-02-05</lastmod>
+    <lastmod>2026-02-25</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
     <loc>https://expe.co.il/accessibility.html</loc>
-    <lastmod>2026-02-05</lastmod>
+    <lastmod>2026-02-25</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
     <loc>https://expe.co.il/cancellation.html</loc>
-    <lastmod>2026-02-05</lastmod>
+    <lastmod>2026-02-25</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://expe.co.il/ppc-for-therapist.html</loc>
+    <lastmod>2026-02-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
   </url>
 </urlset>
